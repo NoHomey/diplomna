@@ -1,11 +1,11 @@
 #include "driver.hh"
 
-Adafruit_TLC5947::Adafruit_TLC5947(const uint8_t& n, const uint8_t& c, const uint8_t& d, const uint8_t& l, const uint8_t& b) {
-  num = n;
-  _clk = c;
-  _dat = d;
-  _lat = l;
-  _blk = b;
+Adafruit_TLC5947::Adafruit_TLC5947(const uint8_t& n, const uint8_t& c, const uint8_t& d, const uint8_t& l, const uint8_t& b)
+: num(n), _clk(c), _dat(d), _lat(l), _blk(b) {
+  pinMode(d, OUTPUT);
+  pinMode(c, OUTPUT);
+  pinMode(l, OUTPUT);
+  pinMode(b, OUTPUT);
   pwmbuffer = (uint16_t *)calloc(24*n, sizeof(uint16_t));
 }
 
