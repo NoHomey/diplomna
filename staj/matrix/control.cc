@@ -8,6 +8,8 @@
 #define num_tlc5947 8
 using namespace std;
 void set(int color, Adafruit_TLC5947 driver);
+void setup();
+void unset();
 int main() {
   setup();
   char c = 0;
