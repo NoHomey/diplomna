@@ -1,6 +1,6 @@
 #include <curses.h>
 #include <iostream>
-#include "driver.h"
+#include "driver.hh"
 #define DATA 0
 #define CLOCK 2
 #define LATCH 3
@@ -9,21 +9,23 @@
 using namespace std;
 void set(int color, Adafruit_TLC5947 driver);
 int main() {
- initscr();
-  noecho();
-  cbreak();
-  wiringPiSetup();
-  pinMode(0, OUTPUT);
+  setup();
   char c = 0;
-  bool val = 0;
-  Adafruit_TLC5947 (1, 2, 3, 4, 5);
+  Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
   while(1) {
    c = getch();
-   if(c == 'i') val = !val;
-   digitalWrite(0, val);
-   if(c == 's') break;
+   switch(c) {
+      case 'q': set(1, tlc);
+      break;
+      case 'w': set(2, tlc);
+      break;
+      case 'e': set(3, tlc);
+      break;
+      default: set(0, tlc);
+      break;
+    }
   }
-  endwin();
+  unset();
   return 0;
 }
 void set(int color, Adafruit_TLC5947 driver) {
@@ -39,4 +41,15 @@ void set(int color, Adafruit_TLC5947 driver) {
       break;
     }
   }
+}
+
+void setup() {
+  initscr();
+  noecho();
+  cbreak();
+  wiringPiSetup();
+}
+
+void unset() {
+  endwin();
 }
