@@ -1,15 +1,16 @@
 #include <curses.h>
 #include <iostream>
 #include "driver.hh"
-#define DATA 0
-#define CLOCK 2
+#define DATA 2
+#define CLOCK 0
 #define LATCH 3
 #define BLANK 4
 #define num_tlc5947 8
 using namespace std;
-void set(int color, Adafruit_TLC5947 driver);
+void set(int color, Adafruit_TLC5947& driver);
 void setup();
 void unset();
+int serial;
 int main() {
   setup();
   char c = 0;
@@ -30,7 +31,7 @@ int main() {
   unset();
   return 0;
 }
-void set(int color, Adafruit_TLC5947 driver) {
+void set(int color, Adafruit_TLC5947& driver) {
   for(int i = 0;i < 64;++i) {
     switch(color) {
       case 1: driver.setLED(i, 4100, 0, 0);
@@ -43,6 +44,7 @@ void set(int color, Adafruit_TLC5947 driver) {
       break;
     }
   }
+  driver.write();
 }
 
 void setup() {
