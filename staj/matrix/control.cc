@@ -7,44 +7,53 @@
 #define BLANK 4
 #define num_tlc5947 8
 using namespace std;
-void set(int color, Adafruit_TLC5947& driver);
 void setup();
 void unset();
+int convert(const int& x, const int& y);
 int serial;
 int main() {
   setup();
   char c = 0;
+  bool flag = 0;
+  int x, y, nx, ny;
+  x = y = nx = ny = 0;
   Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
   while(1) {
    c = getch();
+   if(c == 'o') break;
    switch(c) {
-      case 'q': set(1, tlc);
+      case 'a': {
+        flag = 1;
+        nx = -1;
+      }
       break;
-      case 'w': set(2, tlc);
+      case 'w': {
+        flag = 1;
+        ny = 1;
+      }
       break;
-      case 'e': set(3, tlc);
+      case 's': {
+        flag = 1;
+        ny = -1;
+      }
       break;
-      default: set(0, tlc);
+      case 'd': {
+        flag = 1;
+        nx = 1;
+      }
       break;
+      default: break;
     }
+    if(flag) {
+      tlc.setLED(convert(x, y), 0, 0, 0);
+      tlc.setLED(convert((x += nx), (y += ny)), 4100, 0, 0); 
+      nx = ny = 0;
+      flag = 0;
+    } else tlc.setLED(convert(x, y), 4100, 0, 0);
+    tlc.write();
   }
   unset();
   return 0;
-}
-void set(int color, Adafruit_TLC5947& driver) {
-  for(int i = 0;i < 64;++i) {
-    switch(color) {
-      case 1: driver.setLED(i, 4100, 0, 0);
-      break;
-      case 2: driver.setLED(i, 0, 4100, 0);
-      break;
-      case 3: driver.setLED(i, 0, 0, 4100);
-      break;
-      default: driver.setLED(i, 0, 0, 0);
-      break;
-    }
-  }
-  driver.write();
 }
 
 void setup() {
@@ -56,4 +65,8 @@ void setup() {
 
 void unset() {
   endwin();
+}
+
+int convert(const int& x, const int& y) {
+  return x * 8 + y;
 }
