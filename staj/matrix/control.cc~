@@ -16,17 +16,18 @@ inline void unset();
 inline int convert(const int& x, const int& y);
 inline void set(int& x, int& y);
 
-vector<Shot> shots;
-Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
-
-
-void run_shots() {
+void run_shots(vector<Shot>& shots, Adafruit_TLC5947& tlc) {
   while(1)
     for(int i = 0; i < shots.size();++i)
       shots[i].turn(tlc);
 }
 
-void run_main() {
+
+int main() {
+  setup();
+  vector<Shot> shots;
+  Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
+  thread t_shot(run_shots, shots, tlc);
   char c = 0;
   bool flag = 0;
   int x, y, nx, ny, ox, oy;
@@ -71,14 +72,7 @@ void run_main() {
     tlc.setLED(convert(x, y), 4100, 0, 0);
     tlc.write();
   }
-}
-
-int main() {
-  setup();
-  thread player(run_main);
-  thread shot(run_shots);
-  player.join();
-  shot.join();
+  t_shot.join();
   unset();
   return 0;
 }
