@@ -7,10 +7,10 @@
 #define BLANK 4
 #define num_tlc5947 8
 using namespace std;
-void setup();
-void unset();
-int convert(const int& x, const int& y);
-int serial;
+inline void setup();
+inline void unset();
+inline int convert(const int& x, const int& y);
+inline void set(int& x, int& y);
 int main() {
   setup();
   char c = 0;
@@ -46,10 +46,11 @@ int main() {
     }
     if(flag) {
       tlc.setLED(convert(x, y), 0, 0, 0);
-      tlc.setLED(convert((x += nx), (y += ny)), 4100, 0, 0); 
+      set((x += nx), (y += ny)); 
       nx = ny = 0;
       flag = 0;
-    } else tlc.setLED(convert(x, y), 4100, 0, 0);
+    }
+    tlc.setLED(convert(x, y), 4100, 0, 0);
     tlc.write();
   }
   unset();
@@ -70,3 +71,15 @@ void unset() {
 int convert(const int& x, const int& y) {
   return x * 8 + y;
 }
+
+void set(int& x, int& y) {
+  if(x < 0)
+    x = 7;
+  else if(x > 7)
+    x = 0;
+  if(y < 0)
+    y = 7;
+  else if(y > 7)
+    y = 0;
+}
+
