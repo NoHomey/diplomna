@@ -45,12 +45,14 @@ int main() {
         flag = 1;
         nx = 1;
       }
+      break;
       case ' ': {
         shots.push_back(Shot(x, y, ox, oy));
       }
       break;
       default: break;
     }
+    cout << shots.size() << endl;
     for(int i = 0; i < shots.size();++i)
        shots[i].turn(tlc);
     if(flag) {
