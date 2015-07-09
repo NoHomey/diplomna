@@ -1,0 +1,9 @@
+#include "shot.hh"
+using namespace Shot;
+
+void turn(Adafruit_TLC5947& d) {
+  d.setLED(convert(x_, y_), 0, 0, 0);
+  set((x_ += dx_), (y += dy_)); 
+  d.setLED(convert(x_, y_), 4100, 0, 0);
+}
+

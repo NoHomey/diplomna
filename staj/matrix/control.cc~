@@ -18,9 +18,9 @@ int main() {
   setup();
   char c = 0;
   bool flag = 0;
-  int x, y, nx, ny, ox, oy;
+  int x, y, nx, ny;
   vector<Shot> shots;
-  x = y = nx = ny = ox = oy = 0;
+  x = y = nx = ny = 0;
   Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
   while(1) {
    c = getch();
