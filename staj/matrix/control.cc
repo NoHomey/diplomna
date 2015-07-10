@@ -22,10 +22,10 @@ pthread_mutex_t screen;
 bool run = 1;
 
 void* run_shot(void* arg) {
-  int i = *((int*) arg);
+  int* i = (int*) arg;
   while(run) {
     pthread_mutex_lock(&screen);
-    shots[i].turn(tlc);
+    shots[*i].turn(tlc);
     tlc.write();
     pthread_mutex_unlock(&screen);
     delay(500);   
@@ -38,6 +38,7 @@ int main() {
   bool flag = 0;
   int x, y, nx, ny, ox, oy;
   vector<pthread_t> shot_id;
+  vector<int> arg;
   x = y = nx = ny = ox = oy = 0;
   while(1) {
    c = getch();
@@ -65,8 +66,9 @@ int main() {
       break;
       case ' ': {
         shots.push_back(Shot(x, y, ox, oy));
+        arg.push_back(shots.size() - 1);
         pthread_t id;
-        pthread_create(&id, NULL, run_shot, (void*)(shots.size() - 1));
+        pthread_create(&id, NULL, run_shot, (void*)&(arg[(shots.size() - 1)]));
         shot_id.push_back(id);
       }
       break;
