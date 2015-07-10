@@ -24,6 +24,7 @@ bool run = 1;
 void* run_shot(void* arg) {
   int* i = (int*) arg;
   while(run) {
+    cout << *i << endl;
     pthread_mutex_lock(&screen);
     shots[*i].turn(tlc);
     tlc.write();
@@ -66,9 +67,11 @@ int main() {
       break;
       case ' ': {
         shots.push_back(Shot(x, y, ox, oy));
-        arg.push_back(shots.size() - 1);
+        int i = shots.size() - 1;
+        cout << "i: " << i << endl;
+        arg.push_back(i);
         pthread_t id;
-        pthread_create(&id, NULL, run_shot, (void*)&(arg[(shots.size() - 1)]));
+        pthread_create(&id, NULL, run_shot, (void*)&(arg[i]));
         shot_id.push_back(id);
       }
       break;
