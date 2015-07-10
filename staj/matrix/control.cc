@@ -19,15 +19,16 @@ inline void set(int& x, int& y);
 vector<Shot> shots;
 Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
 pthread_mutex_t screen;
+bool run = 1;
 
-void run_shots(void* arg) {
-  while(1) {
+void* run_shots(void* arg) {
+  while(run) {
     pthread_mutex_lock(&screen);
     for(int i = 0; i < shots.size();++i)
       shots[i].turn(tlc);
     tlc.write();
     pthread_mutex_unlock(&screen);
-    delay(1000);   
+    delay(500);   
   }
 }
 
@@ -77,10 +78,12 @@ int main() {
       nx = ny = 0;
       tlc.setLED(convert(x, y), 4100, 0, 0);
       tlc.write();
-      pthread_mutex_lock(&screen);
+      pthread_mutex_unlock(&screen);
       flag = 0;
     }
   }
+  run = 0;
+  tlc.reset();
   pthread_join(id, NULL);
   unset();
   return 0;
@@ -92,12 +95,12 @@ void setup() {
   cbreak();
   wiringPiSetup();
   tlc.setup();
-  pthread_mutex_init(&screen);
+  pthread_mutex_init(&screen, NULL);
 }
 
 void unset() {
   endwin();
-  pthread_mutex_destroy(&screen)
+  pthread_mutex_destroy(&screen);
 }
 
 int convert(const int& x, const int& y) {

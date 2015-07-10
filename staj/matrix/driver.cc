@@ -45,10 +45,10 @@ void Adafruit_TLC5947::unsetLED(const uint8_t& lednum) {
 }
 
 void Adafruit_TLC5947::setup(void) {
-  pinMode(d, OUTPUT);
-  pinMode(c, OUTPUT);
-  pinMode(l, OUTPUT);
-  pinMode(b, OUTPUT);
+  pinMode(_dat, OUTPUT);
+  pinMode(_clk, OUTPUT);
+  pinMode(_lat, OUTPUT);
+  pinMode(_blk, OUTPUT);
   reset();
 }
 

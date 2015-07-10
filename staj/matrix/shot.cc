@@ -7,6 +7,6 @@ Shot::Shot(const int& x, const int& y, const int& dx, const int& dy)
 void Shot::turn(Adafruit_TLC5947& d) {
   d.unsetLED(convert(x_, y_));
   set((x_ += dx_), (y_ += dy_)); 
-  d.setLED(convert(x_, y_), 4100, 0, 0);
+  d.setLED(convert(x_, y_), 4100, 4100, 0);
 }
 
