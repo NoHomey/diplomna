@@ -65,9 +65,9 @@ int main() {
       break;
       case ' ': {
         shots.push_back(Shot(x, y, ox, oy));
-        shot_id.push_back(pthread_t);
-        int i = shots.size() - 1;
-        pthread_create(&shot_id[i], NULL, run_shot, (void*)i);
+        pthread_t id;
+        pthread_create(&id, NULL, run_shot, (void*)(shots.size() - 1));
+        shot_id.push_back(id);
       }
       break;
       default: break;
@@ -86,7 +86,7 @@ int main() {
   }
   run = 0;
   tlc.reset();
-  for(vector::iterator it = shot_id.begin();it < shot_id.end();++it)
+  for(vector<pthread_t>::iterator it = shot_id.begin();it < shot_id.end();++it)
     pthread_join(*it, NULL);
   unset();
   return 0;
