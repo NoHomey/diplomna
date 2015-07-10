@@ -1,6 +1,6 @@
 #include "libhelp.hh"
 int convert(const int& x, const int& y) {
-  return x * 8 + y;
+  return (x * 8) + y;
 }
 
 void set(int& x, int& y) {

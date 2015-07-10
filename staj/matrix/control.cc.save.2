@@ -70,18 +70,18 @@ int main() {
       }
       break;
       case ' ': {
-        shots.push_back(Shot(x + ox, y + oy, ox, oy));
+        shots.push_back(Shot(x, y, ox, oy));
       }
       break;
       case 'q': {
-        shots.push_back(Shot(x - 1, y, -1, 0));
-        shots.push_back(Shot(x, y - 1, 0, -1));
-        shots.push_back(Shot(x - 1, y - 1, -1, -1));
-        shots.push_back(Shot(x - 1, y + 1, -1, 1));
-        shots.push_back(Shot(x + 1, y - 1, 1, -1));
-        shots.push_back(Shot(x, y + 1, 0, 1));
-        shots.push_back(Shot(x + 1, y, 1, 0));
-        shots.push_back(Shot(x + 1, y + 1, 1, 1));
+        shots.push_back(Shot(x, y, -1, 0));
+        shots.push_back(Shot(x, y, 0, -1));
+        shots.push_back(Shot(x, y, -1, -1));
+        shots.push_back(Shot(x, y, -1, 1));
+        shots.push_back(Shot(x, y, 1, -1));
+        shots.push_back(Shot(x, y, 0, 1));
+        shots.push_back(Shot(x, y, 1, 0));
+        shots.push_back(Shot(x, y, 1, 1));
       }
       break;
       case 'e': {
@@ -93,7 +93,7 @@ int main() {
     if(flag) {
       pthread_mutex_lock(&screen);
       tlc.unsetLED(convert(x, y));
-      tp ? set((x += nx * 3), (y += ny * 3)) : set((x += nx), (y += ny)); 
+      tp ? set((x += nx * 4), (y += ny * 4)) : set((x += nx), (y += ny)); 
       ox = nx, oy = ny;
       tlc.setLED(convert(x, y), 4100, 0, 0);
       tlc.write();

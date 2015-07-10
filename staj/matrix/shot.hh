@@ -9,5 +9,6 @@ void turn(Adafruit_TLC5947& d);
 void move(void);
 private:
 int x_, y_, dx_, dy_, life_;
+bool flag_;
 };
 #endif

@@ -11,3 +11,5 @@ build: control.o driver.o shot.o
 
 clean: 
 	rm -f *.o *~ control a.out
+run: build
+	sudo ./control
