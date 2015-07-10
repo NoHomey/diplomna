@@ -9,9 +9,14 @@ class Adafruit_TLC5947 {
   ~Adafruit_TLC5947(void);
   void setPWM(const uint16_t& chan, const uint16_t& pwm);
   void setLED(const uint8_t& lednum, const uint16_t& b, const uint16_t& r, const uint16_t& g);
+  void unsetLED(const uint8_t& lednum);
   void write(void);
+  void setup(void);
+  void reset();
+  void setALL(const uint16_t& b, const uint16_t& r, const uint16_t& g);
  private:
   uint16_t *pwmbuffer;
   uint8_t num, _clk, _dat, _lat, _blk;
+  bool flag_;
 };
 #endif
