@@ -1,5 +1,4 @@
 #include "libhelp.hh"
-
 int convert(const int& x, const int& y) {
   return x * 8 + y;
 }

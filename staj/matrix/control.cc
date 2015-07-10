@@ -68,6 +68,22 @@ int main() {
         shots.push_back(Shot(x, y, ox, oy));
       }
       break;
+      case 'q': {
+        shots.push_back(Shot(x, y, -1, 0));
+        shots.push_back(Shot(x, y, 0, -1));
+        shots.push_back(Shot(x, y, -1, -1));
+        shots.push_back(Shot(x, y, -1, 1));
+        shots.push_back(Shot(x, y, 1, -1));
+        shots.push_back(Shot(x, y, 0, 1));
+        shots.push_back(Shot(x, y, 1, 0));
+        shots.push_back(Shot(x, y, 1, 1));
+      }
+      break;
+      case 'e': {
+        flag = 1;
+        nx = 4*ox;
+        ny = 4*oy;
+      }
       default: break;
     }
     if(flag) {
