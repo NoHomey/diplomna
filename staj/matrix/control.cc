@@ -21,12 +21,11 @@ Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
 pthread_mutex_t screen;
 bool run = 1;
 
-void* run_shot(void* arg) {
-  int* i = (int*) arg;
+void* run_shots(void* arg) {
   while(run) {
-    cout << *i << endl;
     pthread_mutex_lock(&screen);
-    shots[*i].turn(tlc);
+    for(int i = 0; i < shots.size();++i)
+      shots[i].turn(tlc);
     tlc.write();
     pthread_mutex_unlock(&screen);
     delay(500);   
@@ -38,9 +37,9 @@ int main() {
   char c = 0;
   bool flag = 0;
   int x, y, nx, ny, ox, oy;
-  vector<pthread_t> shot_id;
-  vector<int> arg;
+  pthread_t id;
   x = y = nx = ny = ox = oy = 0;
+  pthread_create(&id, NULL, run_shots, NULL);
   while(1) {
    c = getch();
    if(c == 'o') break;
@@ -67,12 +66,6 @@ int main() {
       break;
       case ' ': {
         shots.push_back(Shot(x, y, ox, oy));
-        int i = shots.size() - 1;
-        cout << "i: " << i << endl;
-        arg.push_back(i);
-        pthread_t id;
-        pthread_create(&id, NULL, run_shot, (void*)&(arg[i]));
-        shot_id.push_back(id);
       }
       break;
       default: break;
@@ -91,8 +84,7 @@ int main() {
   }
   run = 0;
   tlc.reset();
-  for(vector<pthread_t>::iterator it = shot_id.begin();it < shot_id.end();++it)
-    pthread_join(*it, NULL);
+  pthread_join(id, NULL);
   unset();
   return 0;
 }
