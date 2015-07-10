@@ -9,7 +9,7 @@ void Shot::turn(Adafruit_TLC5947& d) {
   if(life_) {
     if(flag_) move();
     else flag_ = 1;
-    d.setLED(convert(x_, y_), 4100, 4100, 0);
+   if(life_) d.setLED(convert(x_, y_), 4100, 4100, 0);
   }
 }
 
