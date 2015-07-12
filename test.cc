@@ -12,7 +12,7 @@ int main() {
   pullUpDnControl(8, PUD_UP); 
   pinMode(9, INPUT);
   pullUpDnControl(9, PUD_UP);   
-  while(digitalRead(15));
+  while(digitalRead(8));
   cout << 1 << endl;
   return 0;
 }
