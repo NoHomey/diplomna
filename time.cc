@@ -11,7 +11,7 @@ int main() {
   tlc.setup();
   tlc.setALL(4100, 0, 0);
   unsigned int t = micros();
-  tlc.write();
+  for(short i = 0;i < 16;++i) tlc.write();
   std::cout << (micros() - t) << std::endl;
   return 0;
 }
