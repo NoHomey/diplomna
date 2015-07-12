@@ -1,4 +1,3 @@
-#include <curses.h>
 #include <iostream>
 #include "driver.hh"
 #include "libhelp.hh"
@@ -42,8 +41,7 @@ int main() {
   x = y = nx = ny = ox = oy = 0;
   pthread_create(&id, NULL, run_shots, NULL);
   while(1) {
-   c = getch();
-   if(c == 'o') break;
+   /*if(c == 'o') break;
    switch(c) {
       case 'a': {
         flag = 1;
@@ -89,6 +87,11 @@ int main() {
         tp = 1;
       }
       default: break;
+    }*/
+    if(!digitalRead(5)) {
+      flag = 1;
+      ny = 1;
+      nx = 0;
     }
     if(flag) {
       pthread_mutex_lock(&screen);
@@ -109,16 +112,14 @@ int main() {
 }
 
 void setup() {
-  initscr();
-  noecho();
-  cbreak();
   wiringPiSetup();
   tlc.setup();
   pthread_mutex_init(&screen, NULL);
+  pinMode(5, INPUT);
+  pullUpDnControl(5, PUD_UP);
 }
 
 void unset() {
-  endwin();
   pthread_mutex_destroy(&screen);
 }
 
