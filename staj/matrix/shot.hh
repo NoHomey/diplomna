@@ -1,7 +1,6 @@
 #ifndef _Shot_H
 #define _Shot_H
 #include "driver.hh"
-#include "libhelp.hh"
 class Shot {
 public:
 Shot(const int& x, const int& y, const int& dx, const int& dy);

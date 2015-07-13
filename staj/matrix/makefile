@@ -4,7 +4,7 @@ conrol.o: control.cc
 
 driver.o: driver.cc driver.hh
 
-shot.o: shot.cc shot.cc
+shot.o: shot.cc shot.hh
 
 bomb.o: bomb.cc bomb.hh
 

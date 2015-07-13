@@ -7,7 +7,7 @@ Bomb::Bomb(const int& x, const int& y)
 void Bomb::turn(std::vector<Shot>& shots) {
   if(life_) {
     i_++;
-    if(i_ == 3) {
+    if(i_ == 27) {
       multy(x_, y_, shots);
       life_ = 0;
     }
