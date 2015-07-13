@@ -6,10 +6,10 @@ Bomb::Bomb(const int& x, const int& y)
 
 void Bomb::turn() {
   if(life_) {
-    i++;
-    if(i == 3) {
+    i_++;
+    if(i_ == 3) {
       multy(x_, y_);
-      life = 0;
+      life_ = 0;
     }
   }
 }
