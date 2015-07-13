@@ -1,6 +1,6 @@
 #include <iostream>
 #include "driver.hh"
-#include "libhelp.hh"
+#include "libhelp.cc"
 #include "shot.hh"
 #include <vector>
 #include <pthread.h>
@@ -35,6 +35,11 @@ void* run_shots(void* arg) {
 
 int main() {
   setup();
+  Adafruit_TLC5947 test(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
+  //test.setup();
+  tlc.setALL(0, 0, 4100);
+  tlc.write();
+  sleep(10);
   bool tp = 0;
   int x, y, nx, ny, ox, oy;
   pthread_t id;
@@ -50,11 +55,12 @@ int main() {
     if(!digitalRead(7))
       nx = 1;
     if(!digitalRead(8))
-      single(x, u, nx, ny);
+      single(x, y, nx, ny);
     if(!digitalRead(8)) 
       multy(x, y);
     if(!digitalRead(15))
       tp = 1;
+    cout << x << y << endl;
     pthread_mutex_lock(&screen);
     tlc.unsetLED(convert(x, y));
     tp ? set((x += nx * 3), (y += ny * 3)) : set((x += nx), (y += ny)); 
@@ -95,21 +101,6 @@ void setup() {
 
 void unset() {
   pthread_mutex_destroy(&screen);
-}
-
-int convert(const int& x, const int& y) {
-  return x * 8 + y;
-}
-
-void set(int& x, int& y) {
-  if(x < 0)
-    x = 7;
-  else if(x > 7)
-    x = 0;
-  if(y < 0)
-    y = 7;
-  else if(y > 7)
-    y = 0;
 }
 
 inline void single(const int& x, const int& y, const int& dx, const int& dy) {

@@ -1,5 +1,5 @@
 #include "shot.hh"
-#include "libhelp.hh"
+#include "libhelp.cc"
 
 Shot::Shot(const int& x, const int& y, const int& dx, const int& dy)
 : x_(x), y_(y), dx_(dx), dy_(dy), life_(1), flag_(0) {}
