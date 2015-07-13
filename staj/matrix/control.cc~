@@ -79,7 +79,18 @@ void setup() {
   pullUpDnControl(5, PUD_UP);
   pinMode(1, INPUT);
   pullUpDnControl(1, PUD_UP);
-
+  pinMode(4, INPUT);
+  pullUpDnControl(4, PUD_UP);
+  pinMode(7, INPUT);
+  pullUpDnControl(7, PUD_UP);
+  pinMode(12, INPUT);
+  pullUpDnControl(12, PUD_UP);
+  pinMode(8, INPUT);
+  pullUpDnControl(8, PUD_UP);
+  pinMode(15, INPUT);
+  pullUpDnControl(15, PUD_UP);
+  pinMode(16, INPUT);
+  pullUpDnControl(16, PUD_UP);
 }
 
 void unset() {
