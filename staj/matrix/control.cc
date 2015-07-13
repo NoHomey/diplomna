@@ -12,9 +12,6 @@
 using namespace std;
 inline void setup();
 inline void unset();
-inline void single(const int& x, const int& y, const int& dx, const int& dy);
-inline void multy(const int& x, const int& y);
-vector<Shot> shots;
 Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
 pthread_mutex_t screen;
 bool run = 1;
@@ -92,16 +89,4 @@ void setup() {
 
 void unset() {
   pthread_mutex_destroy(&screen);
-}
-
-inline void single(const int& x, const int& y, const int& dx, const int& dy) {
-  shots.push_back(Shot(x + dx, y + dy, dx, dy));
-}
-
-inline void multy(const int& x, const int& y) {
-  for(short i = -1;i < 2;++i)
-    for(short j = -1;j < 2;++j) {
-      if(!i && !j) continue;
-      single(x, y, i, j);
-   } 
 }
