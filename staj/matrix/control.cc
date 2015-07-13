@@ -17,6 +17,7 @@ Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
 pthread_mutex_t screen;
 bool run = 1;
 vector<Bomb> bombs;
+vector<Shot> shots;
 void* run_shots(void* arg) {
   while(run) {
     pthread_mutex_lock(&screen);
@@ -31,7 +32,7 @@ void* run_shots(void* arg) {
 void* run_bombs(void* arg) {
   while(run) {
     for(int i = 0; i < bombs.size();++i)
-      bombs[i].turn();
+      bombs[i].turn(shots);
     delay(500);   
   }
 }
