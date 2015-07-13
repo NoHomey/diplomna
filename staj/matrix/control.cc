@@ -41,14 +41,14 @@ int main() {
   pthread_create(&id, NULL, run_shots, NULL);
   while(1) {
     if(!digitalRead(5))
-      ny = 1;
+      ny += 1;
     if(!digitalRead(1))
-      ny = -1;
+      ny += -1;
     if(!digitalRead(9))
-      nx = -1;
+      nx += -1;
     if(!digitalRead(7))
-      nx = 1;
-    if(!digitalRead(8))
+      nx += 1;
+    if(!digitalRead(8) && (nx || ny))
       single(x, y, nx, ny);
     if(!digitalRead(12)) 
       multy(x, y);
