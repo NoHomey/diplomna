@@ -31,7 +31,7 @@ void* run_shots(void* arg) {
 void* run_bombs(void* arg) {
   while(run) {
     for(int i = 0; i < bombs.size();++i)
-      bombs[i].turn();
+      bombs[i].turn(shots);
     delay(500);   
   }
 }
@@ -57,9 +57,9 @@ int main() {
     if(!digitalRead(7))
       nx += 1;
     if(!digitalRead(8) && (nx || ny))
-      single(x, y, nx, ny);
+      single(x, y, nx, ny, shots);
     if(!digitalRead(12)) 
-      multy(x, y);
+      multy(x, y, shots);
     if(!digitalRead(15))
       tp = 1;
     if(!digitalRead(16))

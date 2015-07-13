@@ -5,7 +5,7 @@
 class Bomb {
 public:
 Bomb(const int& x, const int& y);
-void turn();
+void turn(std::vector<Shot> shots);
 private:
 int x_, y_, i_, life_;
 };
