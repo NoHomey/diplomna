@@ -12,9 +12,8 @@
 using namespace std;
 inline void setup();
 inline void unset();
-inline int convert(const int& x, const int& y);
-inline void set(int& x, int& y);
-
+inline void single(const int& x, const int& y, const int& dx, const int& dy);
+inline void multy(const int& x, const int& y);
 vector<Shot> shots;
 Adafruit_TLC5947 tlc(num_tlc5947, DATA, CLOCK, LATCH, BLANK);
 pthread_mutex_t screen;
@@ -36,75 +35,32 @@ int main() {
   char c = 0;
   bool flag = 0;
   bool tp = 0;
-  int x, y, nx, ny, ox, oy;
+  int x, y, nx, ny;
   pthread_t id;
-  x = y = nx = ny = ox = oy = 0;
+  x = y = nx = ny = 0;
   pthread_create(&id, NULL, run_shots, NULL);
   while(1) {
-   /*if(c == 'o') break;
-   switch(c) {
-      case 'a': {
-        flag = 1;
-        nx = -1;
-        ny = 0;
-      }
-      break;
-      case 'w': {
-        flag = 1;
-        ny = 1;
-        nx = 0;
-      }
-      break;
-      case 's': {
-        flag = 1;
-        ny = -1;
-        nx = 0;
-      }
-      break;
-      case 'd': {
-        flag = 1;
-        nx = 1;
-        ny = 0;
-      }
-      break;
-      case ' ': {
-        shots.push_back(Shot(x + ox, y + oy, ox, oy));
-      }
-      break;
-      case 'q': {
-        shots.push_back(Shot(x - 1, y, -1, 0));
-        shots.push_back(Shot(x, y - 1, 0, -1));
-        shots.push_back(Shot(x - 1, y - 1, -1, -1));
-        shots.push_back(Shot(x - 1, y + 1, -1, 1));
-        shots.push_back(Shot(x + 1, y - 1, 1, -1));
-        shots.push_back(Shot(x, y + 1, 0, 1));
-        shots.push_back(Shot(x + 1, y, 1, 0));
-        shots.push_back(Shot(x + 1, y + 1, 1, 1));
-      }
-      break;
-      case 'e': {
-        flag = 1;
-        tp = 1;
-      }
-      default: break;
-    }*/
-    if(!digitalRead(5)) {
-      flag = 1;
+    if(!digitalRead(5))
       ny = 1;
-      nx = 0;
-    }
     if(!digitalRead(1))
-      shots.push_back(Shot(x + ox, y + oy, ox, oy));
-    if(flag) {
-      pthread_mutex_lock(&screen);
-      tlc.unsetLED(convert(x, y));
-      tp ? set((x += nx * 3), (y += ny * 3)) : set((x += nx), (y += ny)); 
-      ox = nx, oy = ny;
-      tlc.setLED(convert(x, y), 4100, 0, 0);
-      tlc.write();
-      pthread_mutex_unlock(&screen);
-      flag = tp = 0;
-    }
+      ny = -1;
+    if(!digitalRead(9))
+      nx = -1;
+    if(!digitalRead(7))
+      nx = 1;
+    if(!digitalRead(8))
+      single(x, y, nx, ny);
+    if(!digitalRead(12)) 
+      multy(x, y);
+    if(!digitalRead(15))
+      tp = 1;
+    pthread_mutex_lock(&screen);
+    tlc.unsetLED(convert(x, y));
+    tp ? set((x += nx * 3), (y += ny * 3)) : set((x += nx), (y += ny)); 
+    tlc.setLED(convert(x, y), 4100, 0, 0);
+    tlc.write();
+    pthread_mutex_unlock(&screen);
+    tp = nx = ny = 0;
     delay(220);
   }
   run = 0;
@@ -122,9 +78,30 @@ void setup() {
   pullUpDnControl(5, PUD_UP);
   pinMode(1, INPUT);
   pullUpDnControl(1, PUD_UP);
-
+  pinMode(8, INPUT);
+  pullUpDnControl(8, PUD_UP);
+  pinMode(7, INPUT);
+  pullUpDnControl(7, PUD_UP);
+  pinMode(9, INPUT);
+  pullUpDnControl(9, PUD_UP);
+  pinMode(12, INPUT);
+  pullUpDnControl(12, PUD_UP);
+  pinMode(15, INPUT);
+  pullUpDnControl(15, PUD_UP);
 }
 
 void unset() {
   pthread_mutex_destroy(&screen);
+}
+
+inline void single(const int& x, const int& y, const int& dx, const int& dy) {
+  shots.push_back(Shot(x + dx, y + dy, dx, dy));
+}
+
+inline void multy(const int& x, const int& y) {
+  for(short i = -1;i < 2;++i)
+    for(short j = -1;j < 2;++j) {
+      if(!i && !j) continue;
+      single(x, y, i, j);
+   } 
 }
