@@ -57,9 +57,9 @@ int main() {
     if(!digitalRead(7))
       nx += 1;
     if(!digitalRead(8) && (nx || ny))
-      single(x, y, nx, ny);
+      single(x, y, nx, ny, shots);
     if(!digitalRead(12)) 
-      multy(x, y);
+      multy(x, y, shots);
     if(!digitalRead(15))
       tp = 1;
     if(!digitalRead(16))
