@@ -2,19 +2,20 @@
 #include <wiringPi.h>
 #include <iostream>
 using namespace std;
+#define PIN 0
 int main() {
- initscr();
+  initscr();
   noecho();
   cbreak();
   wiringPiSetup();
-  pinMode(0, OUTPUT);
+  pinMode(PIN, OUTPUT);
   char c = 0;
   bool val = 0;
   while(1) {
-   c = getch();
-   if(c == 'i') val = !val;
-   digitalWrite(0, val);
-   if(c == 's') break;
+    c = getch();
+    if(c == 'i') val = !val;
+    digitalWrite(PIN, val);
+    if(c == 's') break;
   }
   endwin();
   return 0;
