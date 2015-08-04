@@ -1,13 +1,9 @@
-#include "direction.hh"
+#include "Direction.hh"
 
 Direction::Direction (const int& val) {
     d_ = (val > 0) ? Positive : Negative;
     if (!val)
         d_ = Null;
-}
-
-void Direction::assign (const Direction& dir) {
-    d_ = dir.d_;
 }
 
 void Direction::set (const int& val) {
@@ -16,12 +12,8 @@ void Direction::set (const int& val) {
         d_ = Null;
 }
 
-void Direction::change (void) {
-    if (d_ == Null) {
-        d_ = Positive;
-        return;
-    }
-    d_ = (d_ == Positive) ? Negative : Null;
+int Direction::get (void) const {
+    toInt();
 }
 
 void Direction::invert (void) {
