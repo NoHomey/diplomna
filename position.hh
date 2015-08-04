@@ -2,6 +2,8 @@
 
 #define _Position_HH
 
+#include "trajectory.hh"
+
 class Position {
 
 protected:
@@ -12,13 +14,13 @@ protected:
 public:
 
     Position (const int& x, const int& y);
-    Position (const Position& pos);
     void assign (const Position& pos);
     void set (const int& x, const int& y);
     void setX (const int& val);
     void setY (const int& val);
-    int getX (void);
-    int getY (void);
+    int getX (void) const;
+    int getY (void) const;
+    void change (const Trajectory& tr);
 
 };
 
