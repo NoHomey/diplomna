@@ -3,22 +3,13 @@
 #define _Movment_HH
 
 #include "Direction.hh"
+#include "CartesianCoordinateSystem.hh"
 
-class Movment: public CartesianCoordinateSystem {
-
-protected:
-
-    Direction x_;
-    Direction y_;
+class Movment: public CartesianCoordinateSystem<Direction> {
 
 public:
 
     Movment (const int& x, const int& y);
-    void setXY (const int& x, const int& y);
-    void setX (const int& val);
-    void setY (const int& val);
-    Direction getX (void) const;
-    Direction getY (void) const;
     void invert (void);
 
 };

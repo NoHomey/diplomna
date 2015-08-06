@@ -4,25 +4,17 @@
 
 #include "Movment.hh"
 #include "ToInt.hh"
+#include "CartesianCoordinateSystem.hh"
 
-class Position: public ToInt, public CartesianCoordinateSystem {
 
-protected:
-
-    int x_;
-    int y_;
+class Position: public CartesianCoordinateSystem<int> {
 
 public:
 
     Position (const int& x, const int& y);
-    void setXY (const int& x, const int& y);
-    void setX (const int& val);
-    void setY (const int& val);
-    int getX (void) const;
-    int getY (void) const;
+    void changeX (const Direction& dir);
+    void changeY (const Direction& dir);
     void changeXY (const Movment& mov);
-    void changeX (const Movment& mov);
-    void changeY (const Movment& mov);
     int toInt (void) const;
 
 };
