@@ -10,12 +10,12 @@ class Test: public Runnable {
 
 protected:
 
-	static runnable_t name;
+	static const runnable_t startRoutine;
 
 public:
 
 	Test (const int& i);
-	runnable_t getName (void);
+	runnable_t getStartRoutine (void);
 	static void* run (void* runnable);
 	void method (void);
 

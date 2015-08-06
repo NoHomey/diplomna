@@ -8,13 +8,14 @@ class Runnable {
 
 protected:
 
-	static runnable_t name;
+	static const runnable_t startRoutine;
 
 public:
 
-	virtual runnable_t getName (void) = 0;
+	virtual runnable_t getStartRoutine (void) = 0;
 	static void* run (void* runnable);
 	virtual void method (void) = 0;
 
 };
+
 #endif

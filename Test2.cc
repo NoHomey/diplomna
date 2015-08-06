@@ -1,17 +1,18 @@
 #include "Test2.hh"
 #include <iostream>
 using namespace std;
-runnable_t Test2::name = &Test2::run;
 
-runnable_t Test2::getName (void) {
-	return name;
+const runnable_t Test2::startRoutine = &Test2::run;
+
+runnable_t Test2::getStartRoutine (void) {
+	return startRoutine;
 }
 
 Test2::Test2 (const char& c)
 : c_(c) {}
 
 void* Test2::run (void* runnable) {
-	((Test2*) runnable)->method();	
+	(static_cast<Test2*>(runnable))->method();	
 }
 
 void Test2::method (void) {
