@@ -6,13 +6,13 @@ Direction::Direction (const int& val) {
         d_ = Null;
 }
 
-void Direction::set (const int& val) {
+void Direction::setDirectionValue (const int& val) {
     d_ = (val > 0) ? Positive : Negative;
     if (!val)
         d_ = Null;
 }
 
-int Direction::get (void) const {
+int Direction::getDirectionValue (void) const {
     toInt();
 }
 

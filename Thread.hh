@@ -16,7 +16,7 @@ public:
 
 	Thread (Runnable* runnable);
 	void run (void);
-	void join (void	);
+	void join (void);
 
 };
 

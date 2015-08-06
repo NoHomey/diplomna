@@ -13,8 +13,8 @@ protected:
 public:
 
     Direction (const int& val);
-    void set (const int& val);
-    int get (void) const;
+    void setDirectionValue (const int& val);
+    int getDirectionValue (void) const;
     void invert (void);
     int toInt (void) const;
 

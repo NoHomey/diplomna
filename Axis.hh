@@ -2,6 +2,8 @@
 
 #define _Axis_HH
 
+#include "Direction.hh"
+
 template <class Type> class Axis {
 
 protected:
@@ -11,8 +13,8 @@ protected:
 public:
 
 	Axis (const int& val);
-	void set (const int& val);
-	Type get (void) const;
+	void setAxisValue (const int& val);
+	Type getAxisValue (void) const;
 
 };
 
