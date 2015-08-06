@@ -1,12 +1,12 @@
-#ifndef _Test_HH
+#ifndef _Test2_HH
 
-#define _Test_HH
+#define _Test2_HH
 
 #include "Runnable.hh"
 
-class Test: public Runnable {
+class Test2: public Runnable {
 
-	int i_;
+	char c_;
 
 protected:
 
@@ -14,7 +14,7 @@ protected:
 
 public:
 
-	Test (const int& i);
+	Test2 (const char& c);
 	runnable_t getName (void);
 	static void* run (void* runnable);
 	void method (void);

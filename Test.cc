@@ -1,11 +1,10 @@
 #include "Test.hh"
 #include <iostream>
-#include "Thread.hh"
-#include "Thread.cc"
 using namespace std;
+runnable_t Test::name = &Test::run;
 
-void* Test::getName (void) {
-	return (void*) &Test::run;
+runnable_t Test::getName (void) {
+	return name;
 }
 
 Test::Test (const int& i)
@@ -16,14 +15,7 @@ void* Test::run (void* runnable) {
 }
 
 void Test::method (void) {
-	cout << i_ << endl;
-}
-
-int main() {
-
-	Test test(9);
-	Thread t(&test);
-	t.run();
-	t.join();
-	return 0;
+	while(1) {
+		cout << i_  << ' ' << i_ << ' ' << i_ << endl;
+	}
 }
