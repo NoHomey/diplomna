@@ -6,13 +6,8 @@
 using namespace std;
 
 int main () {
-	Position pos (1, 2);
-	Movment mov (-1, -1);
-	cout << pos.toInt() << endl;
-	pos.changeXY(mov);
-	cout << pos.toInt() << endl;
-	mov.invert();
-	pos.changeXY(mov);
-	cout << pos.toInt() << endl;
+	Position pos (0, 7);
+	pos.isAtEdge();
+	cout << pos.isXAtEdge() << pos.isYAtEdge() << endl;
 	return 0;
 }

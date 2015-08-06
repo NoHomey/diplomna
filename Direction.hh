@@ -2,6 +2,8 @@
 
 #define _Direction_HH
 
+#include "ToInt.hh"
+
 class Direction {
 
     enum direction {Negative = -1, Null, Positive};
