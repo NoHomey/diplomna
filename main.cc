@@ -15,6 +15,7 @@ int main () {
 	Axis<Direction> ad (-9);
 	cout << ad.get().get() << endl;*/
 	CartesianCoordinateSystem<Direction> cart(2, 9);
-	cout << cart.getX().getAxisValue().getDirectionValue() << endl;
+	cart.setXY(0, 7);
+	cout << cart.getX().getAxisValue().getDirectionValue() << cart.getY().getAxisValue().getDirectionValue() << endl;
 	return 0;
 }
