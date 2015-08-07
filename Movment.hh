@@ -9,7 +9,9 @@ class Movment: public CartesianCoordinateSystem<Direction> {
 
 public:
 
-    Movment (const int& x, const int& y);
+	Movment (void);
+	//Movment (const Axis<Direction>& x, const Axis<Direction>& y);
+    Movment (const int8_t& x, const int8_t& y);
     void invert (void);
 
 };

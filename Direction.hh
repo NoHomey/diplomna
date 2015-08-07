@@ -2,7 +2,7 @@
 
 #define _Direction_HH
 
-#include "ToInt.hh"
+#include <inttypes.h>
 
 class Direction {
 
@@ -14,11 +14,11 @@ protected:
 
 public:
 
-    Direction (const int& val);
-    void setDirectionValue (const int& val);
-    int getDirectionValue (void) const;
+	Direction (void);
+    Direction (const int8_t& val);
+    void setDirectionValue (const int8_t& val);
+    int8_t getDirectionValue (void) const;
     void invert (void);
-    int toInt (void) const;
 
 };
 

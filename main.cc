@@ -6,8 +6,10 @@
 using namespace std;
 
 int main () {
-	Position pos (0, 7);
-	pos.isAtEdge();
-	cout << pos.isXAtEdge() << pos.isYAtEdge() << endl;
+	Movment m(1, 0);
+	m.setXValue(-1);
+	m.invert();
+	int v =  m.getXValue();
+	cout << v << endl;
 	return 0;
 }
