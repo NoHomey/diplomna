@@ -1,22 +1,23 @@
-#include "color.hh"
+#include "Color.hh"
 
-Color::Color (const bool& r, const bool& g, const bool& b) 
-: red_(r), green_(g), blue_(b) {}
+Color::Color (void)
+: color_(0) {}
 
-void Color::assign (const Color& c) {
-	red_ = c.red_;
-	green_ = c.green_;
-	blue_ = c.blue_;
+void Color::validate (void) {
+	if(color_ & 4096)
+		color_ = 4095;
 }
 
-bool Color::getRed (void) {
-	return red_;
+Color::Color (const uint16_t& val) 
+: color_(val) {
+	validate();
 }
 
-bool Color::getGreen (void) {
-	return green_;
+void Color::setColorValue (const uint16_t& val) {
+	color_ = val;
+	validate();
 }
 
-bool Color::getBlue (void) {
-	return blue_;
+uint16_t Color::getColorValue (void) {
+	return color_;
 }

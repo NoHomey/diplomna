@@ -2,21 +2,21 @@
 
 #define _Color_HH
 
+#include <inttypes.h>
+
 class Color {
 
 protected:
 
-	bool red_;
-	bool green_;
-	bool blue_;
+	uint16_t color_;
+	void validate (void);
 
 public:
 
-	Color (const bool& r, const bool& g, const bool& b);
-	void assign (const Color& c);
-	bool getRed (void);
-	bool getGreen (void);
-	bool getBlue (void);
+	Color (void);
+	Color (const uint16_t& val);
+	void setColorValue (const uint16_t& val);
+	uint16_t getColorValue (void);
 
 };
 

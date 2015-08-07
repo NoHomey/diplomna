@@ -8,17 +8,17 @@ void Object::assign (const Object& obj) {
 	id_ = obj.id_;
 }
 
-void Object::set (const Color& color, const int& id) {
-	color_ = color;
-	id_ = id;
-}
-
 void Object::setColor (const Color& color) {
 	color_ = color;
 }
 
 void Object::setId (const int& id) {
 	id_ = id;
+}
+
+void Object::set (const Color& color, const int& id) {
+	setColor(color);
+	setId(id);
 }
 
 Color Object::getColor (void) {

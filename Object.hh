@@ -8,16 +8,16 @@ class Object {
 
 protected:
 
-	Color color_;
+	RGBColor color_;
 	int id_;
 
 public:
 
 	Object (const Color& color, const int& id);
 	void assign (const Object& obj);
-	void set (const Color& color, const int& id);
-	void setColor (const Color& color);
+	void setRGBColor (const Color& color);
 	void setId (const int& id);
+	void set (const Color& color, const int& id);
 	Color getColor (void);
 	int getId (void);
 
