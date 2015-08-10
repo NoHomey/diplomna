@@ -23,15 +23,3 @@ void Single::validate (void) {
 	if (axis_ > max)
 		axis_ = max;
 }
-
-#include <iostream>
-using namespace std;
- int main () {
-
- 		Single s;
- 		s.setAxis(98);
- 		int o = s.getAxis();
- 		cout << o << endl;
-
- 	return 0;
- }

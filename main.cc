@@ -3,13 +3,27 @@
 #include "Direction.hh"
 #include "CartesianCoordinateSystem.hh"
 #include <iostream>
+#include "Universal.hh"
 using namespace std;
 
-int main () {
-	Movment m(1, 0);
-	m.setXValue(-1);
-	m.invert();
-	int v =  m.getXValue();
-	cout << v << endl;
-	return 0;
-}
+#include <iostream>
+using namespace std;
+ int main () {
+
+ 		Movment s;
+ 		s.setX(98);
+ 		s.setY(-76);
+ 		s.invert();
+ 		int o = s.getY();
+ 		Position p;
+ 		cout << o << endl;
+ 		p.change(s);
+ 		o = p.getY();
+ 		cout << o << endl;
+ 		Universal u;
+ 		u.toPosition(p);
+ 		o = u.getY();
+ 		cout << o << endl;
+
+ 	return 0;
+ }

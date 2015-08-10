@@ -5,23 +5,24 @@
 #include "Movment.hh"
 #include "ToInt.hh"
 #include "CartesianCoordinateSystem.hh"
+#include <inttypes.h>
+#include "Single.hh"
 
 
-class Position: public CartesianCoordinateSystem<int> {
+class Position: public CartesianCoordinateSystem<Single> {
 
 protected:
 
-    static const int min;
-    static const int max;
+    static const uint8_t min;
+    static const uint8_t max;
     bool xAtEdge_;
     bool yAtEdge_;
 
 public:
 
-    Position (const int& x, const int& y);
-    void changeX (const Direction& dir);
-    void changeY (const Direction& dir);
-    void changeXY (const Movment& mov);
+    Position (void);
+    Position (const int8_t& x, const int8_t& y);
+    void change (const Movment& mov);
     bool isXAtEdge (void);
     bool isYAtEdge (void);
     bool isAtEdge (void);
