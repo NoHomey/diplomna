@@ -6,7 +6,7 @@ RGBColor::RGBColor (void)
 RGBColor::RGBColor (const Color& red, const Color& green, const Color& blue)
 : red_(red), green_(green), blue_(blue) {}
 
-RGBColor::RGBColor (const uint16_t& red, const uint16_t& green, const uint16_t& blue)
+RGBColor::RGBColor (const bool& red, const bool& green, const bool& blue)
 : red_(red), green_(green), blue_(blue) {}
 
 void RGBColor::setRedColor (const Color& color) {
@@ -27,19 +27,19 @@ void RGBColor::setRGBColor (const Color& red, const Color& green, const Color& b
 	setBlueColor(blue);
 }
 
-void RGBColor::setRedColorValue (const uint16_t& val) {
-	red_.setColorValue(val);
+void RGBColor::setRedColorValue (const bool& val) {
+	red_.setColor(val);
 }
 
-void RGBColor::setGreenColorValue (const uint16_t& val) {
-	green_.setColorValue(val);
+void RGBColor::setGreenColorValue (const bool& val) {
+	green_.setColor(val);
 }
 
-void RGBColor::setBlueColorValue (const uint16_t& val) {
-	blue_.setColorValue(val);
+void RGBColor::setBlueColorValue (const bool& val) {
+	blue_.setColor(val);
 }
 
-void RGBColor::setRGBColorValue (const uint16_t& red, const uint16_t& green, const uint16_t& blue) {
+void RGBColor::setRGBColorValue (const bool& red, const bool& green, const bool& blue) {
 	setRedColorValue(red);
 	setGreenColorValue(green);
 	setBlueColorValue(blue);
@@ -57,14 +57,40 @@ Color RGBColor::getBlueColor (void) {
 	return blue_;
 }
 
-uint16_t RGBColor::getRedColorValue (void) {
-	return red_.getColorValue();
+bool RGBColor::getRedColorValue (void) {
+	return red_.getColor();
 }
 
-uint16_t RGBColor::getGreenColorValue (void) {
-	return green_.getColorValue();
+bool RGBColor::getGreenColorValue (void) {
+	return green_.getColor();
 }
 
-uint16_t RGBColor::getBlueColorValue (void) {
-	return blue_.getColorValue();
+bool RGBColor::getBlueColorValue (void) {
+	return blue_.getColor();
+}
+
+void RGBColor::invert (void) {
+	red_.invert();
+	green_.invert();
+	blue_.invert();
+}
+
+void RGBColor::shiftLeft (void) {
+	RGBColor rgb = *this;
+	red_ = rgb.blue_;
+	green_ = rgb.red_;
+	blue_ = rgb.green_;
+}
+
+void RGBColor::shiftRigth (void) {
+	RGBColor rgb = *this;
+	red_ = rgb.green_;
+	green_ = rgb.blue_;
+	blue_ = rgb.red_;
+}
+
+RGBColor RGBColor::getOpositeColor (void) {
+	RGBColor rgb = *this;
+	rgb.invert();
+	return rgb;
 }

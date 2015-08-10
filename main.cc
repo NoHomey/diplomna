@@ -4,6 +4,7 @@
 #include "CartesianCoordinateSystem.hh"
 #include <iostream>
 #include "Universal.hh"
+#include "RGBColor.hh"
 using namespace std;
 int main () {
 
@@ -26,6 +27,21 @@ int main () {
  		cout << a.isValid() << endl;
  		a.setX(8);
  		cout << a.isValid() << endl;
+ 		Color c;
+ 		RGBColor rgb;
+ 		c.setColor(1);
+ 		rgb.invert();
+ 		rgb.setRedColor(c);
+ 		rgb.setGreenColorValue(0);
+ 		cout << rgb.getRedColorValue() << rgb.getGreenColor().getColor() << rgb.getBlueColorValue() << endl;
+ 		rgb.shiftLeft();
+ 		rgb.invert();
+ 		cout << rgb.getRedColorValue() << rgb.getGreenColor().getColor() << rgb.getBlueColorValue() << endl;
+ 		rgb.invert();
+ 		rgb.shiftRigth();
+ 		cout << rgb.getRedColorValue() << rgb.getGreenColor().getColor() << rgb.getBlueColorValue() << endl;
+ 		rgb = rgb.getOpositeColor();
+ 		cout << rgb.getRedColorValue() << rgb.getGreenColor().getColor() << rgb.getBlueColorValue() << endl;
 
  	return 0;
  }

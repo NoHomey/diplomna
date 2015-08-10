@@ -3,21 +3,18 @@
 Color::Color (void)
 : color_(0) {}
 
-void Color::validate (void) {
-	if(color_ > 4096)
-		color_ = 4095;
+
+Color::Color (const bool& color) 
+: color_(color) {}
+
+void Color::setColor (const bool& color)  {
+	color_ = color;
 }
 
-Color::Color (const uint16_t& val) 
-: color_(val) {
-	validate();
-}
-
-void Color::setColorValue (const uint16_t& val) {
-	color_ = val;
-	validate();
-}
-
-uint16_t Color::getColorValue (void) {
+bool Color::getColor (void) {
 	return color_;
+}
+
+void Color::invert (void) {
+	color_ = !color_;
 }
