@@ -30,6 +30,10 @@ bool Position::isAtEdge (void) {
 	return (xAtEdge_ || yAtEdge_);
 }
 
+bool Position::isValid (void) {
+	return (getX() >= min && getY() <= max);
+}
+
  int Position::toInt (void) const {
  	return getX() * (max + 1) + getY();
  }

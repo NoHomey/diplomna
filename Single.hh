@@ -5,11 +5,7 @@
 #include <inttypes.h>
 #include "Axis.hh"
 
-class Single : public Axis<uint8_t> {
-
-protected:
-
-	static const uint8_t max;
+class Single : public Axis<int8_t> {
 
 public:
 
@@ -17,7 +13,7 @@ public:
     Single (const int8_t& val);
     void setAxis (const int8_t& val);
     int8_t getAxis (void) const;
-    void validate (void);
+
 };
 
 #endif

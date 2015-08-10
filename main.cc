@@ -5,10 +5,7 @@
 #include <iostream>
 #include "Universal.hh"
 using namespace std;
-
-#include <iostream>
-using namespace std;
- int main () {
+int main () {
 
  		Movment s;
  		s.setX(98);
@@ -21,9 +18,14 @@ using namespace std;
  		o = p.getY();
  		cout << o << endl;
  		Universal u;
- 		u.toPosition(p);
- 		o = u.getY();
+ 		Position a = u.toPosition(p);
+ 		o = a.getY();
  		cout << o << endl;
+ 		o = a.getX();
+ 		cout << o << endl;
+ 		cout << a.isValid() << endl;
+ 		a.setX(8);
+ 		cout << a.isValid() << endl;
 
  	return 0;
  }

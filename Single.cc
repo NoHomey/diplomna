@@ -1,7 +1,5 @@
 #include "Single.hh"
 
-const uint8_t Single::max = 64;
-
 Single::Single (void) {
     axis_ = 0;
 }
@@ -11,15 +9,9 @@ Single::Single (const int8_t& val) {
 }
 
 void Single::setAxis (const int8_t& val) {
-    axis_ = val;
-    validate();
+    axis_ = val;;
 }
 
 int8_t Single::getAxis (void) const {
     return axis_;
-}
-
-void Single::validate (void) {
-	if (axis_ > max)
-		axis_ = max;
 }

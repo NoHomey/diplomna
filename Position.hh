@@ -26,6 +26,7 @@ public:
     bool isXAtEdge (void);
     bool isYAtEdge (void);
     bool isAtEdge (void);
+    bool isValid (void);
     int toInt (void) const;
 
 };
