@@ -26,15 +26,3 @@ void Multy::validate (void) {
 	if (axis_ > max)
 		axis_ = max;
 }
-
-#include <iostream>
-using namespace std;
- int main () {
-
- 		Multy s;
- 		s.setAxis(-98);
- 		int o = s.getAxis();
- 		cout << o << endl;
-
- 	return 0;
- }
