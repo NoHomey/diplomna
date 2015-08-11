@@ -1,30 +1,28 @@
-#include "object.hh"
+#include "Object.hh"
 
-Object::Object (const Color& color, const int& id)
+Object::Object (void)
+: color_(), id_() {}
+
+Object::Object (const RGBColor& color, const long long unsigned& id)
 : color_(color), id_(id) {}
 
-void Object::assign (const Object& obj) {
-	color_ = obj.color_;
-	id_ = obj.id_;
-}
-
-void Object::setColor (const Color& color) {
+void Object::setRGBColor (const RGBColor& color) {
 	color_ = color;
 }
 
-void Object::setId (const int& id) {
+void Object::setId (const long long unsigned& id) {
 	id_ = id;
 }
 
-void Object::set (const Color& color, const int& id) {
-	setColor(color);
+void Object::setProperties (const RGBColor& color, const long long unsigned& id) {
+	setRGBColor(color);
 	setId(id);
 }
 
-Color Object::getColor (void) {
+RGBColor Object::getRGBColor (void) const {
 	return color_;
 }
 
-int Object::getId (void) {
+long long unsigned Object::getId (void) const {
 	return id_;
 }

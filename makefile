@@ -18,8 +18,10 @@ Color.o: Color.hh Color.cc
 
 RGBColor.o: RGBColor.hh RGBColor.cc Color.o
 
-build: Direction.o Movment.o Single.o Position.o Multy.o Universal.o Color.o RGBColor.o main.o
-	g++ Direction.o Movment.o Single.o Position.o Multy.o Universal.o Color.o RGBColor.o main.o -Wall -std=c++98
+Object.o: Object.hh Object.cc RGBColor.o
+
+build: Direction.o Movment.o Single.o Position.o Multy.o Universal.o Color.o RGBColor.o Object.o main.o
+	g++ Direction.o Movment.o Single.o Position.o Multy.o Universal.o Color.o RGBColor.o Object.o main.o -Wall -std=c++98
 
 clean: 
 	rm -f *.o *~ control a.out

@@ -7,6 +7,7 @@
 #include "CartesianCoordinateSystem.hh"
 #include <inttypes.h>
 #include "Single.hh"
+#include "Direction.hh"
 
 class Universal;
 
@@ -23,7 +24,9 @@ public:
 
     Position (void);
     Position (const int8_t& x, const int8_t& y);
-    void change (const Movment& mov);
+    void changeX (const Direction& direction);
+    void changeY (const Direction& direction);
+    void changeXY (const Movment& movment);
     bool isXAtEdge (void);
     bool isYAtEdge (void);
     bool isAtEdge (void);

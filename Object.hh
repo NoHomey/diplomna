@@ -2,24 +2,24 @@
 
 #define _Object_HH
 
-#include "color.hh"
+#include "RGBColor.hh"
 
 class Object {
 
 protected:
 
 	RGBColor color_;
-	int id_;
+	long long unsigned id_;
 
 public:
 
-	Object (const Color& color, const int& id);
-	void assign (const Object& obj);
-	void setRGBColor (const Color& color);
-	void setId (const int& id);
-	void set (const Color& color, const int& id);
-	Color getColor (void);
-	int getId (void);
+	Object (void);
+	Object (const RGBColor& color, const long long unsigned& id);
+	void setRGBColor (const RGBColor& color);
+	void setId (const long long unsigned& id);
+	void setProperties (const RGBColor& color, const long long unsigned& id);
+	RGBColor getRGBColor (void) const;
+	long long unsigned getId (void) const;
 
 };
 

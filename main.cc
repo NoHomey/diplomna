@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Universal.hh"
 #include "RGBColor.hh"
+#include "Object.hh"
 using namespace std;
 int main () {
 
@@ -12,20 +13,20 @@ int main () {
  		s.setX(98);
  		s.setY(-76);
  		s.invert();
- 		int o = s.getY();
+ 		int o = s.getYValue();
  		Position p;
  		cout << o << endl;
- 		p.change(s);
- 		o = p.getY();
+ 		p.changeXY(s);
+ 		o = p.getYValue();
  		cout << o << endl;
  		Universal u;
  		Position a = u.toPosition(p);
- 		o = a.getY();
+ 		o = a.getYValue();
  		cout << o << endl;
- 		o = a.getX();
+ 		o = a.getXValue();
  		cout << o << endl;
  		cout << a.isValid() << endl;
- 		a.setX(8);
+ 		a.setXValue(8);
  		cout << a.isValid() << endl;
  		Color c;
  		RGBColor rgb;
@@ -42,6 +43,9 @@ int main () {
  		cout << rgb.getRedColorValue() << rgb.getGreenColor().getColor() << rgb.getBlueColorValue() << endl;
  		rgb = rgb.getOpositeColor();
  		cout << rgb.getRedColorValue() << rgb.getGreenColor().getColor() << rgb.getBlueColorValue() << endl;
+ 		Object ob;
+ 		ob.setProperties(rgb, 39);
+ 		cout << ob.getId() << ob.getRGBColor().getBlueColorValue() << endl;
 
  	return 0;
  }
