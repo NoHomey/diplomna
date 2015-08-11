@@ -5,8 +5,8 @@
 #include "CartesianCoordinateSystem.hh"
 #include <inttypes.h>
 #include "Multy.hh"
-#include "Position.hh"
 
+class Position;
 
 class Universal: public CartesianCoordinateSystem<Multy> {
 
@@ -14,7 +14,7 @@ public:
 
     Universal (void);
     Universal (const int8_t& x, const int8_t& y);
-    Position toPosition (const Position& position);
+    Position toPosition (const Position& position) const;
 
 };
 

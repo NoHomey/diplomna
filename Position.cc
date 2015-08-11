@@ -1,4 +1,5 @@
 #include "Position.hh"
+#include "Universal.hh"
 
 const uint8_t Position::min = 0;
 const uint8_t Position::max = 7;
@@ -36,4 +37,8 @@ bool Position::isValid (void) {
 
  int Position::toInt (void) const {
  	return getX() * (max + 1) + getY();
+ }
+
+ Universal Position::toUniversal (const Position& position) const {
+ 	return Universal(getX() - position.getX(), getY() - position.getY());
  }

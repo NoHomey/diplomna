@@ -8,11 +8,11 @@ Multy.o: Multy.hh Multy.cc
 
 Direction.o: Direction.hh Direction.cc
 
-Position.o: Position.cc Position.hh Single.o
+Position.o: Position.cc Position.hh Single.o Universal.o
 
 Movment.o: Movment.hh Movment.cc
 
-Universal.o: Universal.hh Universal.cc Multy.o
+Universal.o: Universal.hh Universal.cc Multy.o Position.o
 
 Color.o: Color.hh Color.cc
 

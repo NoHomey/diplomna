@@ -8,6 +8,7 @@
 #include <inttypes.h>
 #include "Single.hh"
 
+class Universal;
 
 class Position: public CartesianCoordinateSystem<Single> {
 
@@ -28,6 +29,7 @@ public:
     bool isAtEdge (void);
     bool isValid (void);
     int toInt (void) const;
+    Universal toUniversal (const Position& position) const;
 
 };
 

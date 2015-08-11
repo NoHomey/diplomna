@@ -19,6 +19,7 @@ public:
     void setAxis (const int8_t& val);
     int8_t getAxis (void) const;
     void validate (void);
+    
 };
 
 #endif
