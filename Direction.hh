@@ -3,22 +3,24 @@
 #define _Direction_HH
 
 #include <inttypes.h>
-#include "Axis.hh"
 
-namespace direction {
-	enum direction {Negative = -1, Null, Positive};
-}
-
-class Direction : public Axis<direction::direction> {
+class Direction {
 
 public:
 
-	Direction (void);
-    Direction (const int8_t& val);
-    void setAxis (const int8_t& val);
-    int8_t getAxis (void) const;
-    void invert (void);
+	enum DirectionName {Negative = -1, Null, Positive};
 
+	Direction (void);
+    Direction (const DirectionName& direction);
+    void setDirection (const DirectionName& direction);
+    DirectionName getDirection (void) const;
+    void invert (void);
+    int8_t convertNameToInt (const DirectionName& direction) const;
+    DirectionName convertIntToName (const int8_t val) const;
+
+protected:
+
+	DirectionName direction_;
 };
 
 #endif

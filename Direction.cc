@@ -1,32 +1,38 @@
 #include "Direction.hh"
 
-Direction::Direction (void) {
-    axis_ = direction::Null;
+Direction::Direction (void)
+: direction_(Direction::Null) {}
+
+Direction::Direction (const Direction::DirectionName& direction)
+: direction_(direction) {}
+
+void Direction::setDirection (const Direction::DirectionName& direction) {
+     direction_ = direction;
 }
 
-Direction::Direction (const int8_t& val) {
-    axis_ = (val > 0) ? direction::Positive : direction::Negative;
-    if (!val)
-        axis_ = direction::Null;
-}
-
-void Direction::setAxis (const int8_t& val) {
-    axis_ = (val > 0) ? direction::Positive : direction::Negative;
-    if (!val)
-        axis_ = direction::Null;
-}
-
-int8_t Direction::getAxis (void) const {
-    if (axis_ == direction::Null)
-        return 0;
-     return (axis_ == direction::Positive) ? 1 : -1;
+Direction::DirectionName Direction::getDirection (void) const {
+    return direction_;
 }
 
 void Direction::invert (void) {
-    if (axis_ == direction::Negative) {
-        axis_ = direction::Positive;
+    if (direction_ == Direction::Negative) {
+        direction_ = Direction::Positive;
         return;
     }
-    if (axis_ == direction::Positive)
-        axis_ = direction::Negative;
+    if (direction_ == Direction::Positive)
+        direction_ = Direction::Negative;
 }
+
+int8_t Direction::convertNameToInt (const Direction::DirectionName& direction) const {
+    if (direction == Direction::Null)
+        return 0;
+    return (direction == Direction::Positive) ? 1 : -1;
+}
+
+ Direction::DirectionName Direction::convertIntToName (const int8_t val) const {
+    Direction::DirectionName direction;
+    direction = (val > 0) ? Direction::Positive : Direction::Negative;
+    if (!val)
+        direction = Direction::Null;
+    return direction;
+ }

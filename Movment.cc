@@ -1,12 +1,11 @@
 #include "Movment.hh"
+#include "Direction.hh"
+#include "CartesianCoordinateSystem.hh"
 
 Movment::Movment (void)
 : CartesianCoordinateSystem() {}
 
 Movment::Movment (const Direction& x, const Direction& y)
-: CartesianCoordinateSystem(x, y) {}
-
-Movment::Movment (const int8_t& x, const int8_t& y) 
 : CartesianCoordinateSystem(x, y) {}
 
 void Movment::invert (void) {
