@@ -27,7 +27,7 @@ int main () {
  		i = u.getY();
  		cout << i << endl;
 
- 		RGBColor rgb(RGBColor::Cyan);
+ 		RGBColor rgb(Converters::RGBColorConverter.convertNameToRGBColor(RGBColor::Cyan));
  		cout << rgb.getRedColor().getColor() <<  rgb.getGreenColor().getColor() <<  rgb.getBlueColor().getColor() << endl;
  		rgb = rgb.getOpositeRGBColor();
  		rgb.shiftRight();

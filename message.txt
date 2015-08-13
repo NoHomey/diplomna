@@ -1,1 +1,1 @@
-RGBColor done
+RGBColor::setRGBColorByName did not fit the concept of Converters

@@ -7,10 +7,6 @@ RGBColor::RGBColor (void)
 RGBColor::RGBColor (const Color& red, const Color& green, const Color& blue)
 : red_(red), green_(green), blue_(blue) {}
 
-RGBColor::RGBColor (const RGBColor::RGBColorName& name) {
-	setRGBColorByName(name);
-}
-
 void RGBColor::setRedColor (const Color& color) {
 	red_ = color;
 }
@@ -69,10 +65,6 @@ RGBColor::RGBColorName RGBColor::convertRGBColorToName (const RGBColor& color) c
 		case 0:	
 			return RGBColor::Black;
 	}
-}
-
-void RGBColor::setRGBColorByName (const RGBColor::RGBColorName& name) {
-	*this = convertNameToRGBColor(name);
 }
 
 void RGBColor::invert (void) {
