@@ -15,11 +15,9 @@ Direction::DirectionName Direction::getDirection (void) const {
 }
 
 void Direction::invert (void) {
-    if (direction_ == Direction::Negative) {
+    if (direction_ == Direction::Negative) 
         direction_ = Direction::Positive;
-        return;
-    }
-    if (direction_ == Direction::Positive)
+    else if (direction_ == Direction::Positive)
         direction_ = Direction::Negative;
 }
 

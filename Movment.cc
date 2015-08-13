@@ -7,12 +7,8 @@ Movment::Movment (const Direction& x, const Direction& y)
 : CartesianCoordinateSystem(x, y) {}
 
 void Movment::invert (void) {
-    Direction tmp(x_);
-    tmp.invert();
-    x_ = tmp;
-    tmp = y_;
-    tmp.invert();
-    y_ = tmp;
+    x_.invert();
+    y_.invert();
 }
 
 Movment Movment::convertNameToMovment (const Movment::MovmentName& name) const {

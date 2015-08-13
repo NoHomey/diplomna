@@ -9,7 +9,6 @@ class Position;
 
 class Universal: public CartesianCoordinateSystem<int8_t> {
 
-
 protected:
 
 	static const int8_t max;		

@@ -11,7 +11,7 @@ void Color::setColor (const bool& color)  {
 	color_ = color;
 }
 
-bool Color::getColor (void) {
+bool Color::getColor (void) const {
 	return color_;
 }
 

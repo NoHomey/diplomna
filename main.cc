@@ -5,6 +5,7 @@
 #include "Converters.hh"
 #include "Position.hh"
 #include "Universal.hh"
+#include "RGBColor.hh"
 using namespace std;
 int main () {
 
@@ -25,6 +26,12 @@ int main () {
  		Universal u = p.toUniversal(p2);
  		i = u.getY();
  		cout << i << endl;
+
+ 		RGBColor rgb(RGBColor::Cyan);
+ 		cout << rgb.getRedColor().getColor() <<  rgb.getGreenColor().getColor() <<  rgb.getBlueColor().getColor() << endl;
+ 		rgb = rgb.getOpositeRGBColor();
+ 		rgb.shiftRight();
+ 		cout << rgb.getRedColor().getColor() <<  rgb.getGreenColor().getColor() <<  rgb.getBlueColor().getColor() << endl;
 
  	return 0;
  }

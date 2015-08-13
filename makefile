@@ -19,8 +19,12 @@ Position.o: Position.hh Position.cc Direction.o Movment.o
 
 Universal.o: Universal.hh Universal.cc
 
-build: Direction.o Movment.o Converters.o Position.o Universal.o main.o
-	g++ Direction.o Movment.o Converters.o Position.o Universal.o main.o -Wall -std=c++98
+Color.o: Color.hh Color.cc
+
+RGBColor.o: RGBColor.hh RGBColor.cc Color.o 
+
+build: Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o main.o
+	g++ Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o main.o -Wall -std=c++98
 
 clean: 
 	rm -f *.o *~ a.out message

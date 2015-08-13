@@ -1,7 +1,5 @@
 #include "Universal.hh"
 #include "Position.hh"
-#include <iostream>
-using namespace std;
 
 const int8_t Universal::max = 21;		
 const int8_t Universal::min = -Universal::max;
