@@ -29,6 +29,6 @@ git: message clean
 	git commit -F message.txt
 	git push
 
-message: clean
+message:
 	g++ message.cc -o message
 	./message ${m}
