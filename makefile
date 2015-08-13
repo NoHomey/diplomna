@@ -18,12 +18,21 @@ build: Direction.o Movment.o Converters.o main.o
 	g++ Direction.o Movment.o Converters.o main.o -Wall -std=c++98
 
 clean: 
-	rm -f *.o *~ a.out
+	rm -f *.o *~ a.out message
 
 clear:
 	clear
 
-git:
+git: message
 	git add -A
 	git commit -F message.txt
 	git push
+
+message: 
+	g++ message.cc -o message
+	echo argument is ${a}
+	./message ${a}
+
+
+action:
+	echo argument is ${a}
