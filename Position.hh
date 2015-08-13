@@ -2,16 +2,14 @@
 
 #define _Position_HH
 
-#include "Movment.hh"
-#include "ToInt.hh"
 #include "CartesianCoordinateSystem.hh"
 #include <inttypes.h>
-#include "Single.hh"
-#include "Direction.hh"
 
+class Direction;
+class Movment;
 class Universal;
 
-class Position: public CartesianCoordinateSystem<Single> {
+class Position: public CartesianCoordinateSystem<uint8_t> {
 
 protected:
 
@@ -23,7 +21,7 @@ protected:
 public:
 
     Position (void);
-    Position (const int8_t& x, const int8_t& y);
+    Position (const uint8_t& x, const uint8_t& y);
     void changeX (const Direction& direction);
     void changeY (const Direction& direction);
     void changeXY (const Movment& movment);

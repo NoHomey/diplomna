@@ -1,4 +1,6 @@
 #include "Position.hh"
+#include "Direction.hh"
+#include "Movment.hh"
 #include "Universal.hh"
 
 const uint8_t Position::min = 0;
@@ -7,15 +9,15 @@ const uint8_t Position::max = 7;
 Position::Position (void)
 : CartesianCoordinateSystem() {}
 
-Position::Position (const int8_t&x, const int8_t&y) 
+Position::Position (const uint8_t&x, const uint8_t&y) 
 : CartesianCoordinateSystem(x, y), xAtEdge_(0), yAtEdge_(0) {}
 
 void Position::changeX (const Direction& direction) {
- 	setX(getXValue() + direction.getAxis());
+ 	x_ += direction.convertNameToInt(direction.getDirection());
  }
 
  void Position::changeY (const Direction& direction) {
- 	setY(getYValue() + direction.getAxis());
+ 	y_ += direction.convertNameToInt(direction.getDirection());
  }
 
 
@@ -34,21 +36,19 @@ bool Position::isYAtEdge (void) {
 
 bool Position::isAtEdge (void) {
 	xAtEdge_ = yAtEdge_ = 0;
-	int8_t x = getXValue();
-	int8_t y = getYValue();
-	xAtEdge_ = ((x == min) || (x == max));
-	yAtEdge_ = ((y == min) || (y == max));
+	xAtEdge_ = ((x_ == min) || (x_ == max));
+	yAtEdge_ = ((y_ == min) || (y_ == max));
 	return (xAtEdge_ || yAtEdge_);
 }
 
 bool Position::isValid (void) {
-	return (getXValue() >= min && getYValue() <= max);
+	return ((x_ >= min) && (y_ <= max));
 }
 
  int Position::toInt (void) const {
- 	return getXValue() * (max + 1) + getYValue();
+ 	return x_ * (max + 1) + y_;
  }
 
  Universal Position::toUniversal (const Position& position) const {
- 	return Universal(getXValue() - position.getXValue(), getYValue() - position.getYValue());
+ 	return Universal((x_ - position.x_), (y_ - position.y_));
  }
