@@ -2,7 +2,8 @@
 #Once cloned Run:
 #[git config credential.helper store]
 #[git push https://github.com/NoHomey/diplomna.git]
-#Type Username & Password [make git m="a message"] => auto commiting and pushing!
+#Type Username & Password 
+#[make git m="a message"] => auto commiting and pushing! 
 
 all: clear clean build
 

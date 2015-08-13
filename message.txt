@@ -1,1 +1,1 @@
-forgot that no bin files are allowed!
+found a solution for passing just spacebars as separator of words in the message
