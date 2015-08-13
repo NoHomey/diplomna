@@ -23,7 +23,7 @@ clean:
 clear:
 	clear
 
-git: #{m}
+git:
 	git add -A
-	git commit -m m
+	git commit -F message.txt
 	git push
