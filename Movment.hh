@@ -9,13 +9,13 @@ class Movment: public CartesianCoordinateSystem<Direction> {
 
 public:
 
-	enum MovmentName {DownLeft, Down, DownRight, Left, Null, Rigth, UpLeft, Up, UpRight};
+	enum MovmentName {DownLeft, Down, DownRight, Left, Null, Right, UpLeft, Up, UpRight};
 
 	Movment (void);
 	Movment (const Direction& x, const Direction& y);
     void invert (void);
-    Movment convertNameToMovment (const MovmentName& name);
-    MovmentName convertMovmentToName (const Movment& movment);
+    Movment convertNameToMovment (const MovmentName& name) const;
+    MovmentName convertMovmentToName (const Movment& movment) const;
 
 };
 
