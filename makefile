@@ -24,7 +24,8 @@ clean:
 clear:
 	clear
 
-git: message clean
+git: message
+	make clean
 	git add -A
 	git commit -F message.txt
 	git push
