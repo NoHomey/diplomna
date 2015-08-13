@@ -28,11 +28,6 @@ git: message
 	git commit -F message.txt
 	git push
 
-message: 
+message: clean
 	g++ message.cc -o message
-	echo argument is ${a}
-	./message ${a}
-
-
-action:
-	echo argument is ${a}
+	./message ${m}
