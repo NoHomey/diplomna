@@ -17,7 +17,7 @@ public:
 	Object (const RGBColor& color, const long long unsigned& id);
 	void setRGBColor (const RGBColor& color);
 	void setId (const long long unsigned& id);
-	void setProperties (const RGBColor& color, const long long unsigned& id);
+	virtual void setProperties (const RGBColor& color, const long long unsigned& id);
 	RGBColor getRGBColor (void) const;
 	long long unsigned getId (void) const;
 

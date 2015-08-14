@@ -1,1 +1,1 @@
-RGBColor::setRGBColorByName did not fit the concept of Converters
+Engine and Game Object will be used as building blocks for other Classes
