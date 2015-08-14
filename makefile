@@ -23,14 +23,18 @@ Color.o: Color.hh Color.cc
 
 RGBColor.o: RGBColor.hh RGBColor.cc Color.o 
 
-Object.o: Object.hh Object.cc RGBColor.o
+Object.o: Object.hh Object.cc 
 
-GameObject.o: GameObject.hh GameObject.cc Object.o
+RGBObject.o: RGBObject.hh RGBObject.cc RGBColor.o
 
-EngineObject.o: EngineObject.hh EngineObject.cc Object.o
+PositionObject.o: PositionObject.hh PositionObject.cc Object.o
 
-build: Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o GameObject.o EngineObject.o main.o
-	g++ Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o GameObject.o EngineObject.o main.o -Wall -std=c++98
+UniversalObject.o: UniversalObject.hh UniversalObject.cc Object.o
+
+EngineObject.o: EngineObject.hh EngineObject.cc UniversalObject.o Object.o RGBColor.o
+
+build: Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBObject.o PositionObject.o UniversalObject.o EngineObject.o main.o
+	g++ Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBObject.o PositionObject.o UniversalObject.o EngineObject.o main.o -Wall -std=c++98
 
 clean: 
 	rm -f *.o *~ a.out message

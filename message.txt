@@ -1,1 +1,1 @@
-EnigneObject and GameObject work as expected
+Made changes into Object hierarchy and Engine and Game fit better to the upcoming classes

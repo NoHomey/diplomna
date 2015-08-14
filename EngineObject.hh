@@ -2,25 +2,21 @@
 
 #define _EngineObject_HH
 
+#include "UniversalObject.hh"
 #include "Object.hh"
-#include "Universal.hh"
-
-class GameObject;
+#include <vector>
+#include "RGBColor.hh"
 
 class EngineObject : public Object {
 
 protected:
 
-	Universal universal_;
+	std::vector<UniversalObject> texture_;
+	static const RGBColor::RGBColorName RGBColorName[8];
 
-public:
 
-	EngineObject (void);
-	EngineObject (const Universal& universal, const RGBColor& color, const long long unsigned& id);
-	void setUniversal (const Universal& universal);
-	virtual void setProperties (const Universal& universal, const RGBColor& color, const long long unsigned& id);
-	Universal getUniversal (void) const;
-	GameObject toGameObject (const Position& position) const;
+
+
 };
 
 #endif

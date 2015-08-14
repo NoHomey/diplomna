@@ -6,8 +6,8 @@
 #include "Position.hh"
 #include "Universal.hh"
 #include "RGBColor.hh"
-#include "GameObject.hh"
-#include "EngineObject.hh"
+#include "PositionObject.hh"
+#include "UniversalObject.hh"
 using namespace std;
 int main () {
 
@@ -35,10 +35,10 @@ int main () {
  		rgb.shiftRight();
  		cout << rgb.getRedColor().getColor() <<  rgb.getGreenColor().getColor() <<  rgb.getBlueColor().getColor() << endl;
 
- 		GameObject go(p2, rgb, 1);
+ 		PositionObject go(p2, rgb, 1);
  		i = go.getPosition().getX();
  		cout << i << endl;
- 		go = go.toEngineObject(p).toGameObject(p);
+ 		go = go.toUniversalObject(p).toPositionObject(p);
  		i = go.getPosition().getX();
  		cout << i << endl;
 
