@@ -1,1 +1,1 @@
-Made changes into Object hierarchy and Engine and Game fit better to the upcoming classes
+Beging of GameObject generating {seting a self goal to finish it in the next 50 h}
