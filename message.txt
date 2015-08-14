@@ -1,1 +1,1 @@
-Engine and Game Object will be used as building blocks for other Classes
+EnigneObject and GameObject work as expected
