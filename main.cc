@@ -8,8 +8,8 @@
 #include "RGBColor.hh"
 #include "PositionObject.hh"
 #include "UniversalObject.hh"
-#include "FileChecker.hh"
 #include "FileNotExist.hh"
+#include "Render.hh"
 using namespace std;
 int main () {
 
@@ -43,9 +43,14 @@ int main () {
  		go = go.toUniversalObject(p).toPositionObject(p);
  		i = go.getPosition().getX();
  		cout << i << endl;*/
-
- 		FileNotExist f("./CodeStyle/README.md");
- 		cout << f.what() << endl;
+ 		Render r("./Game/");
+ 		try {
+ 			r.rend("Ship1");
+ 			r.rend("Ship2");
+ 			r.rend("Ship3");
+ 		} catch (FileNotExist& e) {
+ 			cout << e.what() << endl;
+ 		}
 
  	return 0;
  }
