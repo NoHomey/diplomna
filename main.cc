@@ -8,10 +8,12 @@
 #include "RGBColor.hh"
 #include "PositionObject.hh"
 #include "UniversalObject.hh"
+#include "FileChecker.hh"
+#include "FileNotExist.hh"
 using namespace std;
 int main () {
 
- 		Movment s(Converters::DirectionConverter.convertIntToName(-1), Converters::DirectionConverter.convertIntToName(-1));
+ 		/*Movment s(Converters::DirectionConverter.convertIntToName(-1), Converters::DirectionConverter.convertIntToName(-1));
  		s = Converters::MovmentConverter.convertNameToMovment(Converters::MovmentConverter.convertMovmentToName(s));
  		s.invert();
  		int i = Converters::DirectionConverter.convertNameToInt(s.getX().getDirection());
@@ -40,7 +42,10 @@ int main () {
  		cout << i << endl;
  		go = go.toUniversalObject(p).toPositionObject(p);
  		i = go.getPosition().getX();
- 		cout << i << endl;
+ 		cout << i << endl;*/
+
+ 		FileNotExist f("./CodeStyle/README.md");
+ 		cout << f.what() << endl;
 
  	return 0;
  }

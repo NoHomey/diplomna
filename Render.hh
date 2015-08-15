@@ -15,7 +15,7 @@ public:
 
 	Render (void);
 	Render (const std::string& dir);
-	void rend (const std::string& dir) const;
+	void rend (const std::string& name) const;
 	void setDir (const std::string& dir);
 	std::string getDir (void) const;
 

@@ -33,8 +33,14 @@ UniversalObject.o: UniversalObject.hh UniversalObject.cc Object.o
 
 EngineObject.o: EngineObject.hh EngineObject.cc UniversalObject.o Object.o RGBColor.o
 
-build: Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBObject.o PositionObject.o UniversalObject.o EngineObject.o main.o
-	g++ Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBObject.o PositionObject.o UniversalObject.o EngineObject.o main.o -Wall -std=c++98
+FileChecker.o: FileChecker.hh FileChecker.cc
+
+FileNotExist.o: FileNotExist.hh FileNotExist.cc
+
+Render.o: Render.hh Render.cc FileChecker.o FileNotExist.o
+
+build: Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBObject.o PositionObject.o UniversalObject.o EngineObject.o FileChecker.o FileNotExist.o Render.o main.o
+	g++ Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBObject.o PositionObject.o UniversalObject.o EngineObject.o FileChecker.o FileNotExist.o Render.o main.o -Wall -std=c++98
 
 clean: 
 	rm -f *.o *~ a.out message

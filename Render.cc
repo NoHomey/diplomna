@@ -1,4 +1,6 @@
 #include "Render.hh"
+#include "FileChecker.hh"
+#include "FileNotExist.hh"
 
 Render::Render (void)
 : dir_("./Resources") {}
@@ -6,7 +8,17 @@ Render::Render (void)
 Render::Render (const std::string& dir) 
 : dir_(dir) {}
 
-void Render::rend (const std::string& dir) const {
+void Render::rend (const std::string& name) const {
+	std::string path (dir_);
+	path += name + std::string(".rdbx");
+	bool renderable; {
+		FileChecker file(path);
+		renderable = file.exist();
+	}
+	if (!renderable) 
+		throw FileNotExist(path);
+	std::ifstream rdbx(path.c_str());
+
 
 }
 
