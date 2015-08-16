@@ -15,7 +15,7 @@ Universal::Universal (const int8_t&x, const int8_t&y)
 }
 
 Position Universal::toPosition (const Position& position) const {
- 	return Position(x_ - position.getX(), y_ - position.getY());
+ 	return Position((position.getX() - x_),(position.getY() - y_));
  }
 
 void Universal::validate (int8_t& axis) {	

@@ -32,11 +32,10 @@ void Render::rend (const std::string& name) const {
 					} else
 						rddx << "\n" << count << (current - compared) << *it;
 				}
-				if(it == (line.end() - 1))
-					count++;
 				current++;
 			} else throw std::exception();
 		}
+		count++;
 	}
 }
 
