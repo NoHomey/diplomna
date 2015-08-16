@@ -1,25 +1,25 @@
-#include "UniversalObject.hh"
-#include "PositionObject.hh"
+#include "UniversalContainer.hh"
+#include "PositionContainer.hh"
 
-UniversalObject::UniversalObject (void) 
-: RGBObject() , universal_() {}
+UniversalContainer::UniversalContainer (void) 
+: RGBContainer() , universal_() {}
 
-UniversalObject::UniversalObject (const Universal& universal, const RGBColor& color, const long long unsigned& id)
-: RGBObject(color, id), universal_(universal) {}
+UniversalContainer::UniversalContainer (const Universal& universal, const RGBColor& color, const long long unsigned& id)
+: RGBContainer(color), universal_(universal) {}
 
-void UniversalObject::setUniversal (const Universal& universal) {
+void UniversalContainer::setUniversal (const Universal& universal) {
 	universal_ = universal;
 }
 
-void UniversalObject::setProperties (const Universal& universal, const RGBColor& color, const long long unsigned& id) {
-	RGBObject::setProperties(color, id);
+void UniversalContainer::setProperties (const Universal& universal, const RGBColor& color, const long long unsigned& id) {
+	setRGBColor(color);
 	setUniversal(universal);
 }
 
-Universal UniversalObject::getUniversal (void) const {
+Universal UniversalContainer::getUniversal (void) const {
 	return universal_;
 }
 
-PositionObject UniversalObject::toPositionObject (const Position& position) const {
-	return PositionObject(universal_.toPosition(position), color_, id_);
+PositionContainer UniversalContainer::toPositionContainer (const Position& position) const {
+	return PositionContainer(universal_.toPosition(position), color_, id_);
 }

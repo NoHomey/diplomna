@@ -25,7 +25,7 @@ RGBColor.o: RGBColor.hh RGBColor.cc Color.o
 
 Object.o: Object.hh Object.cc 
 
-RGBObject.o: RGBObject.hh RGBObject.cc RGBColor.o
+RGBContainer.o: RGBContainer.hh RGBContainer.cc RGBColor.o
 
 PositionObject.o: PositionObject.hh PositionObject.cc Object.o
 
@@ -37,8 +37,8 @@ FileNotExist.o: FileNotExist.hh FileNotExist.cc
 
 Render.o: Render.hh Render.cc FileNotExist.o
 
-build: Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBObject.o PositionObject.o UniversalObject.o EngineObject.o FileNotExist.o Render.o main.o
-	g++ Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBObject.o PositionObject.o UniversalObject.o EngineObject.o FileNotExist.o Render.o main.o -Wall -std=c++98
+build: Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBContainer.o PositionObject.o UniversalObject.o EngineObject.o FileNotExist.o Render.o main.o
+	g++ Direction.o Movment.o Converters.o Position.o Universal.o Color.o RGBColor.o Object.o RGBContainer.o PositionObject.o UniversalObject.o EngineObject.o FileNotExist.o Render.o main.o -Wall -std=c++98
 
 clean: 
 	rm -f *.o *~ a.out message

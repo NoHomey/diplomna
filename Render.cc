@@ -1,15 +1,10 @@
 #include "Render.hh"
+#include <fstream>
 #include "FileNotExist.hh"
 #include <exception>
 
-Render::Render (void)
-: dir_("./Resources") {}
-
-Render::Render (const std::string& dir) 
-: dir_(dir) {}
-
-void Render::rend (const std::string& name) const {
-	std::string path(dir_);
+void Render::rend (const std::string& dir, const std::string& name) const {
+	std::string path(dir);
 	path += name + std::string("/") + name + std::string(".rdbx");
 	std::ifstream rdbx(path.c_str());
 	if (!rdbx.is_open()) 
@@ -37,12 +32,4 @@ void Render::rend (const std::string& name) const {
 		}
 		count++;
 	}
-}
-
-void Render::setDir (const std::string& dir) {
-	dir_ = dir;
-}
-
-std::string Render::getDir (void) const {
-	return dir_;
 }
