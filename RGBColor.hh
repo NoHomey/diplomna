@@ -18,15 +18,15 @@ public:
 
 	RGBColor (void);
 	RGBColor (const Color& red, const Color& green, const Color& blue);
-	void setRedColor (const Color& color);
-	void setGreenColor (const Color& color);
-	void setBlueColor (const Color& color);
+	void setRedColor (const Color& rgbColor);
+	void setGreenColor (const Color& rgbColor);
+	void setBlueColor (const Color& rgbColor);
 	void setRGBColor (const Color& red, const Color& green, const Color& blue);
 	Color getRedColor (void) const;
 	Color getGreenColor (void) const;
 	Color getBlueColor (void) const;
 	RGBColor convertNameToRGBColor (const RGBColorName& name) const;
-	RGBColorName convertRGBColorToName (const RGBColor& color) const;
+	RGBColorName convertRGBColorToName (const RGBColor& rgbColor) const;
 	void invert (void);
 	void shiftLeft (void);
 	void shiftRight (void);

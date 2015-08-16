@@ -1,15 +1,15 @@
 #include "RGBContainer.hh"
 
 RGBContainer::RGBContainer (void)
-: color_() {}
+: rgbColor_() {}
 
-RGBContainer::RGBContainer (const RGBColor& color)
-: color_(color) {}
+RGBContainer::RGBContainer (const RGBColor& rgbColor)
+: rgbColor_(rgbColor) {}
 
-void RGBContainer::setRGBColor (const RGBColor& color) {
-	color_ = color;
+void RGBContainer::setRGBColor (const RGBColor& rgbColor) {
+	rgbColor_ = rgbColor;
 }
 
 RGBColor RGBContainer::getRGBColor (void) const {
-	return color_;
+	return rgbColor_;
 }

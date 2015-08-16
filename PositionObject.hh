@@ -2,12 +2,12 @@
 
 #define _PositionObject_HH
 
-#include "RGBObject.hh"
+#include "ScreenObject.hh"
 #include "Position.hh"
 
 class UniversalObject;
 
-class PositionObject : public RGBObject {
+class PositionObject : public ScreenObject {
 
 protected:
 
@@ -16,11 +16,10 @@ protected:
 public:
 
 	PositionObject (void);
-	PositionObject (const Position& position, const RGBColor& color, const long long unsigned& id);
+	PositionObject (const RGBColor& rgbColor, const uint8_t id, const std::string& objectType, const Position& position);
 	void setPosition (const Position& position);
-	virtual void setProperties (const Position& position, const RGBColor& color, const long long unsigned& id);
+	virtual void setProperties (const RGBColor& rgbColor, const uint8_t id, const std::string& objectType, const Position& position);
 	Position getPosition (void) const;
-	UniversalObject toUniversalObject (const Position& position) const;
 
 };
 

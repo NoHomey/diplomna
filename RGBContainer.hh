@@ -8,13 +8,13 @@ class RGBContainer {
 
 protected:
 
-	RGBColor color_;
+	RGBColor rgbColor_;
 
 public:
 
 	RGBContainer (void);
-	RGBContainer (const RGBColor& color);
-	void setRGBColor (const RGBColor& color);
+	RGBContainer (const RGBColor& rgbColor);
+	void setRGBColor (const RGBColor& rgbColor);
 	RGBColor getRGBColor (void) const;
 
 };

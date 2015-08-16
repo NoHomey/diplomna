@@ -1,25 +1,20 @@
 #include "PositionObject.hh"
-#include "UniversalObject.hh"
 
 PositionObject::PositionObject (void) 
-: RGBObject() , position_() {}
+: ScreenObject() , position_() {}
 
-PositionObject::PositionObject (const Position& position, const RGBColor& color, const long long unsigned& id)
-: RGBObject(color, id), position_(position) {}
+PositionObject::PositionObject (const RGBColor& rgbColor, const uint8_t id, const std::string& objectType, const Position& position)
+: ScreenObject(rgbColor, id, objectType), position_(position) {}
 
 void PositionObject::setPosition (const Position& position) {
 	position_ = position;
 }
 
-void PositionObject::setProperties (const Position& position, const RGBColor& color, const long long unsigned& id) {
-	RGBObject::setProperties(color, id);
+void PositionObject::setProperties (const RGBColor& rgbColor, const uint8_t id, const std::string& objectType, const Position& position) {
+	ScreenObject::setProperties(rgbColor, id, objectType);
 	setPosition(position);
 }
 
 Position PositionObject::getPosition (void) const {
 	return position_;
-}
-
-UniversalObject PositionObject::toUniversalObject (const Position& position) const {
-	return UniversalObject(position_.toUniversal(position), color_, id_);
 }

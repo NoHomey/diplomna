@@ -2,18 +2,20 @@
 
 #define _Object_HH
 
+#include <inttypes.h>
+
 class Object {
 
 protected:
 
-	long long unsigned id_;
+	uint64_t id_;
 
 public:
 
 	Object (void);
-	Object (const long long unsigned& id);
-	void setId (const long long unsigned& id);
-	long long unsigned getId (void) const;
+	Object (const uint64_t& id);
+	void setId (const uint64_t& id);
+	uint64_t getId (void) const;
 
 };
 

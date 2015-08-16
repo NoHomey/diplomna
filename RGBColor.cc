@@ -7,16 +7,16 @@ RGBColor::RGBColor (void)
 RGBColor::RGBColor (const Color& red, const Color& green, const Color& blue)
 : red_(red), green_(green), blue_(blue) {}
 
-void RGBColor::setRedColor (const Color& color) {
-	red_ = color;
+void RGBColor::setRedColor (const Color& rgbColor) {
+	red_ = rgbColor;
 }
 
-void RGBColor::setGreenColor (const Color& color) {
-	green_ = color;
+void RGBColor::setGreenColor (const Color& rgbColor) {
+	green_ = rgbColor;
 }
 
-void RGBColor::setBlueColor (const Color& color) {
-	blue_ = color;
+void RGBColor::setBlueColor (const Color& rgbColor) {
+	blue_ = rgbColor;
 }
 
 void RGBColor::setRGBColor (const Color& red, const Color& green, const Color& blue) {
@@ -42,11 +42,11 @@ RGBColor RGBColor::convertNameToRGBColor (const RGBColor::RGBColorName& name) co
 	return RGBColor(Color(bits[2]), Color(bits[1]), Color(bits[0]));
 }
 
-RGBColor::RGBColorName RGBColor::convertRGBColorToName (const RGBColor& color) const {
+RGBColor::RGBColorName RGBColor::convertRGBColorToName (const RGBColor& rgbColor) const {
 	std::bitset<3> bits;
-	bits[2] = color.red_.getColor();
-	bits[1] = color.green_.getColor();
-	bits[0] = color.blue_.getColor();
+	bits[2] = rgbColor.red_.getColor();
+	bits[1] = rgbColor.green_.getColor();
+	bits[0] = rgbColor.blue_.getColor();
 	switch(bits.to_ulong()) {
 		case 7:
 			return RGBColor::White;
