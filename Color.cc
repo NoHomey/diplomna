@@ -1,20 +1,16 @@
 #include "Color.hh"
 
-Color::Color (void)
-: color_(0) {}
+Color::Color (const bool& color) noexcept
+: color_ {color} {}
 
-
-Color::Color (const bool& color) 
-: color_(color) {}
-
-void Color::setColor (const bool& color)  {
+auto Color::setColor (const bool& color) noexcept -> void { 
 	color_ = color;
 }
 
-bool Color::getColor (void) const {
+auto Color::getColor (void) const noexcept -> bool {
 	return color_;
 }
 
-void Color::invert (void) {
+auto Color::invert (void) noexcept -> void {
 	color_ = !color_;
 }

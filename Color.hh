@@ -4,17 +4,17 @@
 
 class Color {
 
-protected:
-
-	bool color_;
-
 public:
 
-	Color (void);
-	Color (const bool& color);
-	void setColor (const bool& color);
-	bool getColor (void) const;
-	void invert (void);
+	Color (void) noexcept = default;
+	Color (const bool& color) noexcept;
+	auto setColor (const bool& color) noexcept -> void;
+	auto getColor (void) const noexcept -> bool;
+	auto invert (void) noexcept -> void;
+
+protected:
+
+	bool color_ {false};
 
 };
 

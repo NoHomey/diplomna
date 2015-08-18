@@ -2,6 +2,7 @@
 #include "Movment.hh"
 #include "Converters.hh"
 #include "Position.hh"
+#include "Color.hh"
 
 #include <iostream>
 using namespace std;
@@ -17,6 +18,10 @@ int main () {
 
 	Position pos;
 	cout << pos.isXAtEdge() << endl;
+
+	Color c;
+	c.setColor(1);
+	cout << c.getColor() << endl;
 
 	return 0;
  }

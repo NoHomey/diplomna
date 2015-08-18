@@ -24,8 +24,11 @@ Converters.o: Converters.hh Converters.cc Direction.o Movment.o
 Position.o: Position.hh Position.cc Direction.o Movment.o
 	${C} Position.cc -c
 
-build: Direction.o Movment.o Converters.o Position.o main.o
-	${C} Direction.o Movment.o Converters.o Position.o main.o -Wall
+Color.o: Color.hh Color.cc
+	${C} Color.cc -c
+
+build: Direction.o Movment.o Converters.o Position.o Color.o main.o
+	${C} Direction.o Movment.o Converters.o Position.o Color.o main.o -Wall
 
 clean: 
 	rm -f *.o *~ a.out message

@@ -4,7 +4,7 @@
 //#include "RGBColor.hh"
 
 namespace Converters {
-	 const Direction DirectionConverter{};
-	 const Movment MovmentConverter{};
+	 const Direction DirectionConverter {};
+	 const Movment MovmentConverter {};
 	 //const RGBColor RGBColorConverter{RGBColor{}};
 }
