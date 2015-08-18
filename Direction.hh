@@ -7,8 +7,8 @@ class Direction {
 public:
 
 	enum DirectionName {Negative = -1, Null, Positive};
-
-	Direction (void) noexcept;
+	
+	Direction (void) noexcept = default;
     Direction (const DirectionName& directionName) noexcept;
     auto setDirectionName (const DirectionName& directionName) noexcept -> void;
     auto getDirectionName (void) const noexcept -> DirectionName;
@@ -18,7 +18,8 @@ public:
 
 protected:
 
-	DirectionName directionName_;
+    DirectionName directionName_ {Null};
+
 };
 
 #endif

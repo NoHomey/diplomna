@@ -1,8 +1,5 @@
 #include "Direction.hh"
 
-Direction::Direction (void) noexcept
-: directionName_{Null} {}
-
 Direction::Direction (const DirectionName& directionName) noexcept
 : directionName_{directionName} {}
 

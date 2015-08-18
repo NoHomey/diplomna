@@ -11,11 +11,13 @@ public:
 
 	enum MovmentName {DownLeft, Down, DownRight, Left, Null, Right, UpLeft, Up, UpRight};
 
-	Movment (void);
-	Movment (const Direction& x, const Direction& y);
-    void invert (void);
-    Movment convertNameToMovment (const MovmentName& name) const;
-    MovmentName convertMovmentToName (const Movment& movment) const;
+    auto invert (void) noexcept -> void;
+    auto convertNameToMovment (const MovmentName& movmentName) const noexcept -> Movment;
+    auto convertMovmentToName (const Movment& movment) const noexcept -> MovmentName;
+
+private:
+	
+	using CartesianCoordinateSystem<Direction>::CartesianCoordinateSystem;
 
 };
 

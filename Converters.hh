@@ -4,15 +4,14 @@
 
 class Direction;
 class Movment;
-class RGBColor;
+//class RGBColor;
 
 namespace Converters {
 
 	extern const Direction DirectionConverter;
 	extern const Movment MovmentConverter;
-	extern const RGBColor RGBColorConverter;
+	//extern const auto RGBColorConverter;
 
 }
-
 
 #endif

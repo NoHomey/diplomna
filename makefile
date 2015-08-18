@@ -15,8 +15,17 @@ main.o: main.cc
 Direction.o: Direction.hh Direction.cc
 	${C} Direction.cc -c
 
-build: Direction.o main.o
-	${C} Direction.o main.o -Wall
+Movment.o: Movment.hh Movment.cc Direction.o
+	${C} Movment.cc -c
+
+Converters.o: Converters.hh Converters.cc Direction.o Movment.o
+	${C} Converters.cc -c
+
+Position.o: Position.hh Position.cc Direction.o Movment.o
+	${C} Position.cc -c
+
+build: Direction.o Movment.o Converters.o Position.o main.o
+	${C} Direction.o Movment.o Converters.o Position.o main.o -Wall
 
 clean: 
 	rm -f *.o *~ a.out message

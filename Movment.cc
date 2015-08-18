@@ -1,71 +1,65 @@
 #include "Movment.hh"
 
-Movment::Movment (void)
-: CartesianCoordinateSystem() {}
-
-Movment::Movment (const Direction& x, const Direction& y)
-: CartesianCoordinateSystem(x, y) {}
-
-void Movment::invert (void) {
+auto Movment::invert (void) noexcept -> void {
     x_.invert();
     y_.invert();
 }
 
-Movment Movment::convertNameToMovment (const Movment::MovmentName& name) const {
-	switch(name) {
-		case Movment::DownLeft:
-			return Movment(Direction::Negative, Direction::Negative);
-		case Movment::Down:
-			return Movment(Direction::Null, Direction::Negative);
-		case Movment::DownRight:
-			return Movment(Direction::Positive, Direction::Negative);
-		case Movment::Left:
-			return Movment(Direction::Negative, Direction::Null);
-		case Movment::Null:
-			return Movment(Direction::Null, Direction::Null);
-		case Movment::Right:
-			return Movment(Direction::Positive, Direction::Null);
-		case Movment::UpLeft:
-			return Movment(Direction::Negative, Direction::Positive);
-		case Movment::Up:
-			return Movment(Direction::Null, Direction::Positive);
-		case Movment::UpRight:
-			return Movment(Direction::Positive, Direction::Positive);
+auto Movment::convertNameToMovment (const MovmentName& movmentName) const noexcept -> Movment {
+	switch(movmentName) {
+		case DownLeft:
+			return {Direction::Negative, Direction::Negative};
+		case Down:
+			return {Direction::Null, Direction::Negative};
+		case DownRight:
+			return {Direction::Positive, Direction::Negative};
+		case Left:
+			return {Direction::Negative, Direction::Null};
+		case Null:
+			return {Direction::Null, Direction::Null};
+		case Right:
+			return {Direction::Positive, Direction::Null};
+		case UpLeft:
+			return {Direction::Negative, Direction::Positive};
+		case Up:
+			return {Direction::Null, Direction::Positive};
+		case UpRight:
+			return {Direction::Positive, Direction::Positive};
 	}
 }
 
- Movment::MovmentName Movment::convertMovmentToName (const Movment& movment) const {
- 	Direction::DirectionName x = movment.x_.getDirection();
- 	Direction::DirectionName y = movment.y_.getDirection();
+auto Movment::convertMovmentToName (const Movment& movment) const  noexcept -> MovmentName {
+ 	Direction::DirectionName x = movment.x_.getDirectionName();
+ 	Direction::DirectionName y = movment.y_.getDirectionName();
  	switch(y) {
  		case Direction::Negative: {
  			switch(x) {
  				case Direction::Negative:
- 					return Movment::DownLeft;
+ 					return DownLeft;
  				case Direction::Null:
- 					return Movment::Down;
+ 					return Down;
  				case Direction::Positive:
- 					return Movment::DownRight;
+ 					return DownRight;
  			}
  		}
  		case Direction::Null: {
  			switch(x) {
  				case Direction::Negative:
- 					return Movment::Left;
+ 					return Left;
  				case Direction::Null:
- 					return Movment::Null;
+ 					return Null;
  				case Direction::Positive:
- 					return Movment::Right;
+ 					return Right;
  			}
  		}
  		case Direction::Positive: {
  			switch(x) {
  				case Direction::Negative:
- 					return Movment::UpLeft;
+ 					return UpLeft;
  				case Direction::Null:
- 					return Movment::Up;
+ 					return Up;
  				case Direction::Positive:
- 					return Movment::UpRight;
+ 					return UpRight;
  			}
  		}
  	}

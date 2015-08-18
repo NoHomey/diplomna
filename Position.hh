@@ -3,34 +3,33 @@
 #define _Position_HH
 
 #include "CartesianCoordinateSystem.hh"
-#include <inttypes.h>
 
 class Direction;
 class Movment;
-class Universal;
 
-class Position: public CartesianCoordinateSystem<uint8_t> {
-
-protected:
-
-    static const uint8_t min;
-    static const uint8_t max;
-    bool xAtEdge_;
-    bool yAtEdge_;
+class Position: public CartesianCoordinateSystem<int> {
 
 public:
 
-    Position (void);
-    Position (const uint8_t& x, const uint8_t& y);
-    void changeX (const Direction& direction);
-    void changeY (const Direction& direction);
-    void changeXY (const Movment& movment);
-    bool isXAtEdge (void);
-    bool isYAtEdge (void);
-    bool isAtEdge (void);
-    bool isValid (void);
-    int toInt (void) const;
-    Universal toUniversal (const Position& position) const;
+    auto changeX (const Direction& direction) noexcept -> void;
+    auto changeY (const Direction& direction) noexcept -> void;
+    auto changeXY (const Movment& movment) noexcept -> void;
+    auto isXAtEdge (void) const noexcept -> bool;
+    auto isYAtEdge (void) const noexcept -> bool;
+    auto isAtEdge (void) noexcept -> bool;
+    auto isValid (void) const noexcept -> bool;
+    auto toInt (void) const noexcept -> int;
+
+protected:
+
+    static const int min;
+    static const int max;
+    bool xAtEdge_ {false};
+    bool yAtEdge_ {false};
+
+private:
+    
+    using CartesianCoordinateSystem<int>::CartesianCoordinateSystem;
 
 };
 

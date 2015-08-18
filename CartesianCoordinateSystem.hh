@@ -2,51 +2,46 @@
 
 #define _CartesianCoordinateSystem_HH
 
-#include <inttypes.h>
-
 template <class T> class CartesianCoordinateSystem {
-
-protected:
-
-	T x_;
-	T y_;
 
 public:
 
-	CartesianCoordinateSystem (void);
-	CartesianCoordinateSystem (const T& x, const T& y);
-    void setX (const T& x);
-    void setY (const T& y);
-    void setXY (const T& x, const T& y);
-    T getX (void) const;
-    T getY (void) const;
+	CartesianCoordinateSystem (void) noexcept = default;
+	CartesianCoordinateSystem (const T& x, const T& y) noexcept;
+    auto setX (const T& x) noexcept -> void;
+    auto setY (const T& y) noexcept -> void;
+    auto setXY (const T& x, const T& y) noexcept -> void;
+    auto getX (void) const noexcept -> T;
+    auto getY (void) const noexcept -> T;
+
+protected:
+
+	T x_ {};
+	T y_ {};
 
 };
 
-template <class T> CartesianCoordinateSystem<T>::CartesianCoordinateSystem (void)
-: x_(), y_() {}
+template <class T> CartesianCoordinateSystem<T>::CartesianCoordinateSystem (const T& x, const T& y) noexcept
+: x_ {x}, y_ {y} {}
 
-template <class T> CartesianCoordinateSystem<T>::CartesianCoordinateSystem (const T& x, const T& y)
-: x_(x), y_(y) {}
-
-template <class T> void CartesianCoordinateSystem<T>::setX (const T& x) {
+template <class T> auto CartesianCoordinateSystem<T>::setX (const T& x) noexcept -> void {
 	x_ = x;
 }
 
-template <class T> void CartesianCoordinateSystem<T>::setY (const T& y) {
+template <class T> auto CartesianCoordinateSystem<T>::setY (const T& y) noexcept -> void {
 	y_ = y;
 }
 
-template <class T> void CartesianCoordinateSystem<T>::setXY(const T& x, const T& y) {
+template <class T> auto CartesianCoordinateSystem<T>::setXY(const T& x, const T& y) noexcept -> void {
 	setX(x);
 	setY(y);
 }
 
-template <class T> T CartesianCoordinateSystem<T>::getX (void) const {
+template <class T> auto CartesianCoordinateSystem<T>::getX (void) const noexcept -> T {
 	return x_;
 }
 
-template <class T> T CartesianCoordinateSystem<T>::getY (void) const {
+template <class T> auto CartesianCoordinateSystem<T>::getY (void) const noexcept -> T {
 	return y_;
 }
 
