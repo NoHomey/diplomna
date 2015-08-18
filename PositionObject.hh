@@ -5,21 +5,19 @@
 #include "ScreenObject.hh"
 #include "Position.hh"
 
-class UniversalObject;
-
 class PositionObject : public ScreenObject {
-
-protected:
-
-	Position position_;
 
 public:
 
-	PositionObject (void);
-	PositionObject (const RGBColor& rgbColor, const uint8_t id, const std::string& objectType, const Position& position);
-	void setPosition (const Position& position);
-	virtual void setProperties (const RGBColor& rgbColor, const uint8_t id, const std::string& objectType, const Position& position);
-	Position getPosition (void) const;
+	PositionObject (void) noexcept = default;
+	PositionObject (const long long& id, const std::string& objectType, const RGBColor& rgbColor, const Position& position) noexcept;
+	auto setPosition (const Position& position) noexcept -> void;
+	auto setProperties (const long long& id, const std::string& objectType, const RGBColor& rgbColor, const Position& position) noexcept -> void;
+	auto getPosition (void) const noexcept -> Position;
+
+protected:
+
+	Position position_ {};
 
 };
 

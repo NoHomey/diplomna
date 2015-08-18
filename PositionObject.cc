@@ -1,20 +1,17 @@
 #include "PositionObject.hh"
 
-PositionObject::PositionObject (void) 
-: ScreenObject() , position_() {}
+PositionObject::PositionObject (const long long& id, const std::string& objectType, const RGBColor& rgbColor, const Position& position) noexcept
+: ScreenObject(id, objectType, rgbColor), position_(position) {}
 
-PositionObject::PositionObject (const RGBColor& rgbColor, const uint8_t id, const std::string& objectType, const Position& position)
-: ScreenObject(rgbColor, id, objectType), position_(position) {}
-
-void PositionObject::setPosition (const Position& position) {
+auto PositionObject::setPosition (const Position& position) noexcept -> void{
 	position_ = position;
 }
 
-void PositionObject::setProperties (const RGBColor& rgbColor, const uint8_t id, const std::string& objectType, const Position& position) {
-	ScreenObject::setProperties(rgbColor, id, objectType);
+auto PositionObject::setProperties (const long long& id, const std::string& objectType, const RGBColor& rgbColor, const Position& position) noexcept -> void {
+	ScreenObject::setProperties(id, objectType, rgbColor);
 	setPosition(position);
 }
 
-Position PositionObject::getPosition (void) const {
+auto PositionObject::getPosition (void) const noexcept -> Position {
 	return position_;
 }

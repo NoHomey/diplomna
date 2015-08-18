@@ -6,6 +6,7 @@
 #include "Object.hh"
 #include "RGBColor.hh"
 #include "ScreenObject.hh"
+#include "PositionObject.hh"
 
 #include <iostream>
 using namespace std;
@@ -35,6 +36,10 @@ int main () {
 	ScreenObject so  {};
 	so.setProperties(o.getId(), "TestObject", rgb);
 	cout << so.getObjectType() << endl;
+
+	PositionObject po {o.getId(), "TestObject2", {0, 1, 0}, {3, 4}};
+	po.setProperties(432, "TestObject0", {1, 1, 0}, {2, 1});
+	cout << po.getPosition().getY() << endl;
 
 	return 0;
  }

@@ -1,1 +1,1 @@
-Screen Object : c++14
+PositionObject : c++14 {Done for today with rewriting Render left only ps: replace FileNotFound with just exception, custom exceptions will be added in later stage}

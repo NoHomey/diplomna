@@ -13,7 +13,7 @@ public:
 	ScreenObject (const long long& id, const std::string& objectType, const RGBColor& rgbColor) noexcept;
 	auto setObjectType (const std::string& objectType) noexcept -> void;
 	auto setRGBColor (const RGBColor& rgbColor) noexcept -> void;
-	virtual auto setProperties (const long long& id, const std::string& objectType, const RGBColor& rgbColor)  noexcept -> void;
+	auto setProperties (const long long& id, const std::string& objectType, const RGBColor& rgbColor)  noexcept -> void;
 	auto getObjectType (void) const noexcept -> std::string;
 	auto getRGBColor (void) const noexcept -> RGBColor;
 
