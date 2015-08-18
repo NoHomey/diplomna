@@ -33,8 +33,11 @@ RGBColor.o: RGBColor.hh RGBColor.cc Color.o
 Object.o: Object.hh Object.cc
 	${C} Object.cc -c
 
-build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o main.o
-	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o main.o -Wall
+ScreenObject.o: ScreenObject.hh ScreenObject.cc Object.o RGBColor.o
+	${C} ScreenObject.cc -c
+
+build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o ScreenObject.o main.o
+	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o ScreenObject.o main.o -Wall
 
 clean: 
 	rm -f *.o *~ a.out message

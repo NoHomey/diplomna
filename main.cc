@@ -5,6 +5,7 @@
 #include "Color.hh"
 #include "Object.hh"
 #include "RGBColor.hh"
+#include "ScreenObject.hh"
 
 #include <iostream>
 using namespace std;
@@ -30,6 +31,10 @@ int main () {
 
 	RGBColor rgb {c, {}, {}};
 	cout << rgb.convertNameToRGBColor(RGBColor::Yellow).getColor().getColor() << endl;
+
+	ScreenObject so  {};
+	so.setProperties(o.getId(), "TestObject", rgb);
+	cout << so.getObjectType() << endl;
 
 	return 0;
  }

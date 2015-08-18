@@ -1,21 +1,27 @@
 #include "ScreenObject.hh"
 
-ScreenObject::ScreenObject (void)
-: RGBContainer(), Object(), objectType_() {}
+ScreenObject::ScreenObject (const long long& id, const std::string& objectType, const RGBColor& rgbColor) noexcept
+: Object(), objectType_ {objectType}, rgbColor_ {rgbColor} {}
 
-ScreenObject::ScreenObject (const RGBColor& color, const uint8_t id, const std::string& objectType)
-: RGBContainer(color), Object(id), objectType_(objectType) {}
-
-void ScreenObject::setObjectType (const std::string& objectType) {
+auto ScreenObject::setObjectType (const std::string& objectType) noexcept -> void {
 	objectType_ = objectType;
 }
 
-void ScreenObject::setProperties (const RGBColor& color, const uint8_t id, const std::string& objectType) {
-	rgbColor_ = color;
-	id_ = id;
-	objectType_ = objectType;
+auto ScreenObject::setRGBColor (const RGBColor& rgbColor) noexcept -> void {
+	rgbColor_ = rgbColor;
 }
 
-std::string ScreenObject::getObjectType (void) const {
+auto ScreenObject::setProperties (const long long& id, const std::string& objectType, const RGBColor& rgbColor) noexcept -> void {
+	setId(id);
+	setObjectType(objectType);
+	setRGBColor(rgbColor);
+
+}
+
+auto ScreenObject::getObjectType (void) const noexcept -> std::string {
 	return objectType_;
+}
+
+auto ScreenObject::getRGBColor (void) const noexcept -> RGBColor {
+	return rgbColor_;
 }

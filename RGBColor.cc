@@ -36,18 +36,15 @@ auto RGBColor::getBlueColor (void) const noexcept -> Color {
 
 auto RGBColor::getColor (void) noexcept -> Color {
 	switch (count_) {
-		case 0: {
+		case 0: 
 			count_ = 1;
 			return getRedColor();
-		}
-		case 1: {
+		case 1: 
 			count_ = 2;
 			return getGreenColor();
-		}
-		case 2: {
+		case 2: 
 			count_ = 0;
 			return getBlueColor();
-		}
 	}
 }
 
