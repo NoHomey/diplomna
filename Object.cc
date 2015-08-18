@@ -1,15 +1,12 @@
 #include "Object.hh"
 
-Object::Object (void)
-: id_() {}
+Object::Object (const long long& id) noexcept
+: id_ {id} {}
 
-Object::Object (const uint64_t& id)
-: id_(id) {}
-
-void Object::setId (const uint64_t& id) {
+auto Object::setId (const long long& id) noexcept -> void {
 	id_ = id;
 }
 
-uint64_t Object::getId (void) const {
+auto Object::getId (void) const noexcept -> long long {
 	return id_;
 }

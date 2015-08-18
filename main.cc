@@ -3,6 +3,7 @@
 #include "Converters.hh"
 #include "Position.hh"
 #include "Color.hh"
+#include "Object.hh"
 
 #include <iostream>
 using namespace std;
@@ -22,6 +23,9 @@ int main () {
 	Color c;
 	c.setColor(1);
 	cout << c.getColor() << endl;
+
+	Object o {9983796676768};
+	cout << o.getId() << endl;
 
 	return 0;
  }
