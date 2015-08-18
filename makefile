@@ -27,11 +27,14 @@ Position.o: Position.hh Position.cc Direction.o Movment.o
 Color.o: Color.hh Color.cc
 	${C} Color.cc -c
 
+RGBColor.o: RGBColor.hh RGBColor.cc Color.o
+	${C} RGBColor.cc -c
+
 Object.o: Object.hh Object.cc
 	${C} Object.cc -c
 
-build: Direction.o Movment.o Converters.o Position.o Color.o Object.o main.o
-	${C} Direction.o Movment.o Converters.o Position.o Color.o Object.o main.o -Wall
+build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o main.o
+	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o main.o -Wall
 
 clean: 
 	rm -f *.o *~ a.out message

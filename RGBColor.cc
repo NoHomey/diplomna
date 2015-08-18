@@ -1,94 +1,108 @@
 #include "RGBColor.hh"
 #include <bitset> 
 
-RGBColor::RGBColor (void) 
-: red_(), green_(), blue_() {}
+RGBColor::RGBColor (const Color& red, const Color& green, const Color& blue) noexcept
+: red_ {red}, green_ {green}, blue_ {blue}, count_ {0} {}
 
-RGBColor::RGBColor (const Color& red, const Color& green, const Color& blue)
-: red_(red), green_(green), blue_(blue) {}
-
-void RGBColor::setRedColor (const Color& rgbColor) {
+auto RGBColor::setRedColor (const Color& rgbColor) noexcept -> void {
 	red_ = rgbColor;
 }
 
-void RGBColor::setGreenColor (const Color& rgbColor) {
+auto RGBColor::setGreenColor (const Color& rgbColor) noexcept -> void {
 	green_ = rgbColor;
 }
 
-void RGBColor::setBlueColor (const Color& rgbColor) {
+auto RGBColor::setBlueColor (const Color& rgbColor) noexcept -> void  {
 	blue_ = rgbColor;
 }
 
-void RGBColor::setRGBColor (const Color& red, const Color& green, const Color& blue) {
+auto RGBColor::setRGBColor (const Color& red, const Color& green, const Color& blue) noexcept -> void {
 	setRedColor(red);
 	setGreenColor(green);
 	setBlueColor(blue);
 }
 
-Color RGBColor::getRedColor (void) const {
+auto RGBColor::getRedColor (void) const noexcept -> Color {
 	return red_;
 }
 
-Color RGBColor::getGreenColor (void) const {
+auto RGBColor::getGreenColor (void) const noexcept -> Color {
 	return green_;
 }
 
-Color RGBColor::getBlueColor (void) const {
+auto RGBColor::getBlueColor (void) const noexcept -> Color {
 	return blue_;
 }
 
-RGBColor RGBColor::convertNameToRGBColor (const RGBColor::RGBColorName& name) const {
-	std::bitset<3> bits(name);
-	return RGBColor(Color(bits[2]), Color(bits[1]), Color(bits[0]));
-}
-
-RGBColor::RGBColorName RGBColor::convertRGBColorToName (const RGBColor& rgbColor) const {
-	std::bitset<3> bits;
-	bits[2] = rgbColor.red_.getColor();
-	bits[1] = rgbColor.green_.getColor();
-	bits[0] = rgbColor.blue_.getColor();
-	switch(bits.to_ulong()) {
-		case 7:
-			return RGBColor::White;
-		case 6:
-			return RGBColor::Yellow;
-		case 5:
-			return RGBColor::Fuchsia;
-		case 4:
-			return RGBColor::Red;
-		case 3:
-			return RGBColor::Cyan;
-		case 2:
-			return RGBColor::Green;
-		case 1:
-			return RGBColor::Blue;
-		case 0:	
-			return RGBColor::Black;
+auto RGBColor::getColor (void) noexcept -> Color {
+	switch (count_) {
+		case 0: {
+			count_ = 1;
+			return getRedColor();
+		}
+		case 1: {
+			count_ = 2;
+			return getGreenColor();
+		}
+		case 2: {
+			count_ = 0;
+			return getBlueColor();
+		}
 	}
 }
 
-void RGBColor::invert (void) {
+auto RGBColor::convertNameToRGBColor (const RGBColorName& name) const noexcept -> RGBColor {
+	std::bitset<3> bits {name};
+	return {{bits[2]}, {bits[1]}, {bits[0]}};
+}
+
+auto RGBColor::convertRGBColorToName (const RGBColor& rgbColor) const noexcept -> RGBColorName {
+	std::bitset<3> bits {};
+	RGBColor rgb {rgbColor};
+	for(int i = 2; i >= 0; ++i)
+		bits[i] = rgb.getColor().getColor();
+	switch(bits.to_ulong()) {
+		case 7:
+			return White;
+		case 6:
+			return Yellow;
+		case 5:
+			return Fuchsia;
+		case 4:
+			return Red;
+		case 3:
+			return Cyan;
+		case 2:
+			return Green;
+		case 1:
+			return Blue;
+		case 0:	
+			return Black;
+	}
+}
+
+auto RGBColor::invert (void) noexcept -> void {
 	red_.invert();
 	green_.invert();
 	blue_.invert();
 }
 
-void RGBColor::shiftRight (void) {
-	RGBColor rgb = *this;
+auto RGBColor::shiftRight (void) noexcept -> void {
+	RGBColor rgb {*this};
 	red_ = rgb.blue_;
 	green_ = rgb.red_;
 	blue_ = rgb.green_;
 }
 
-void RGBColor::shiftLeft (void) {
-	RGBColor rgb = *this;
+auto RGBColor::shiftLeft (void) noexcept -> void {
+	RGBColor rgb {*this};
 	red_ = rgb.green_;
 	green_ = rgb.blue_;
 	blue_ = rgb.red_;
 }
 
-RGBColor RGBColor::getOpositeRGBColor (void) {
-	RGBColor rgb = *this;
+auto RGBColor::getOpositeRGBColor (void) const noexcept -> RGBColor {
+	RGBColor rgb {*this};
 	rgb.invert();
 	return rgb;
 }

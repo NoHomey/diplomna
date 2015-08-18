@@ -4,6 +4,7 @@
 #include "Position.hh"
 #include "Color.hh"
 #include "Object.hh"
+#include "RGBColor.hh"
 
 #include <iostream>
 using namespace std;
@@ -26,6 +27,9 @@ int main () {
 
 	Object o {9983796676768};
 	cout << o.getId() << endl;
+
+	RGBColor rgb {c, {}, {}};
+	cout << rgb.convertNameToRGBColor(RGBColor::Yellow).getColor().getColor() << endl;
 
 	return 0;
  }
