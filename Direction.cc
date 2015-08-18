@@ -1,36 +1,34 @@
 #include "Direction.hh"
 
-Direction::Direction (void)
-: direction_(Direction::Null) {}
+Direction::Direction (void) noexcept
+: directionName_{Null} {}
 
-Direction::Direction (const Direction::DirectionName& direction)
-: direction_(direction) {}
+Direction::Direction (const DirectionName& directionName) noexcept
+: directionName_{directionName} {}
 
-void Direction::setDirection (const Direction::DirectionName& direction) {
-     direction_ = direction;
+auto Direction::setDirectionName (const DirectionName& directionName) noexcept -> void {
+     directionName_ = directionName;
 }
 
-Direction::DirectionName Direction::getDirection (void) const {
-    return direction_;
+auto Direction::getDirectionName (void) const noexcept -> DirectionName {
+    return directionName_;
 }
 
-void Direction::invert (void) {
-    if (direction_ == Direction::Negative) 
-        direction_ = Direction::Positive;
-    else if (direction_ == Direction::Positive)
-        direction_ = Direction::Negative;
+auto Direction::invert (void) noexcept -> void {
+    if (directionName_ == Negative) 
+        directionName_ = Positive;
+    else if (directionName_ == Positive)
+        directionName_ = Negative;
 }
 
-int8_t Direction::convertNameToInt (const Direction::DirectionName& direction) const {
-    if (direction == Direction::Null)
-        return 0;
-    return (direction == Direction::Positive) ? 1 : -1;
+auto Direction::convertNameToInt (const DirectionName& directionName) const noexcept -> int {
+    return directionName;
 }
 
- Direction::DirectionName Direction::convertIntToName (const int8_t val) const {
-    Direction::DirectionName direction;
-    direction = (val > 0) ? Direction::Positive : Direction::Negative;
+auto Direction::convertIntToName (const int& val) const noexcept -> DirectionName {
+    DirectionName directionName;
+    directionName = (val > 0) ? Positive : Negative;
     if (!val)
-        direction = Direction::Null;
-    return direction;
+        directionName = Null;
+    return directionName;
  }
