@@ -8,7 +8,7 @@ class Render {
 
 public:
 
-	void rend (const std::string& dir, const std::string& name) const;
+	auto rend (const std::string& dir, const std::string& name) const -> void;
 
 };
 

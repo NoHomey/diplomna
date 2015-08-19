@@ -1,1 +1,1 @@
-PositionObject : c++14 {Done for today with rewriting Render left only ps: replace FileNotFound with just exception, custom exceptions will be added in later stage}
+Render : c++14 + added width and height and changed the way rddx is separating coordinates and color

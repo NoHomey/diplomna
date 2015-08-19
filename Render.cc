@@ -1,35 +1,39 @@
 #include "Render.hh"
 #include <fstream>
-#include "FileNotExist.hh"
 #include <exception>
 
-void Render::rend (const std::string& dir, const std::string& name) const {
-	std::string path(dir);
-	path += name + std::string("/") + name + std::string(".rdbx");
-	std::ifstream rdbx(path.c_str());
-	if (!rdbx.is_open()) 
-		throw FileNotExist(path);
-	std::string line;
-	path.erase(path.end() - 2, path.end());
-	path += std::string("dx");
-	std::ofstream rddx(path.c_str());
-	int count = -1;
+auto Render::rend (const std::string& dir, const std::string& name) const -> void {
+	std::string path {dir + name + "/" + name};
+	std::string rdbx {path + ".rdbx"};
+	std::ifstream rdbxFile(rdbx.c_str());
+	if (!rdbxFile.is_open()) 
+		throw std::exception();
+	std::string rddx {path + ".rddx"};;
+	std::ofstream rddxFile(rddx.c_str());
+	int height = -1;
 	int compared = -1;
-	while(getline(rdbx, line)) {
+	int width = 0;
+	std::string line;
+	while(getline(rdbxFile, line)) {
 		int current = 0;
-		for(std::string::iterator it = line.begin();it != line.end();++it) {
-			if(((*it >= '1') && (*it <= '8')) || (*it == '@')) {
-				if((*it >= '1') && (*it <= '8')) {
+		int count = 0;
+		for(auto c : line) {
+			if(((c >= '1') && (c <= '8')) || (c == '@')) {
+				if((c >= '1') && (c <= '8')) {
+					count++;
 					if(compared == -1) {
-						count = 0;
+						height = 0;
 						compared = current;
-						rddx << "00" << *it;
+						rddxFile << "0&0#" << c;
 					} else
-						rddx << "\n" << count << (current - compared) << *it;
+						rddxFile << '\n' << height  << '&' << (current - compared)  << '#' << c;
 				}
 				current++;
 			} else throw std::exception();
 		}
-		count++;
+		if (count > width)
+			width = count;
+		height++;
 	}
+	rddxFile << "\n~" << height << 'x' << width;
 }

@@ -7,6 +7,7 @@
 #include "RGBColor.hh"
 #include "ScreenObject.hh"
 #include "PositionObject.hh"
+#include "Render.hh"
 
 #include <iostream>
 using namespace std;
@@ -40,6 +41,15 @@ int main () {
 	PositionObject po {o.getId(), "TestObject2", {0, 1, 0}, {3, 4}};
 	po.setProperties(432, "TestObject0", {1, 1, 0}, {2, 1});
 	cout << po.getPosition().getY() << endl;
+
+	Render r;
+	try {
+ 			r.rend("./Game/", "Ship1");
+ 			r.rend("./Game/", "Ship2");
+ 			r.rend("./Game/", "Ship3");
+ 		} catch (exception& e) {
+ 			cout << e.what() << endl;
+ 		}
 
 	return 0;
  }

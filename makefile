@@ -39,8 +39,11 @@ ScreenObject.o: ScreenObject.hh ScreenObject.cc Object.o RGBColor.o
 PositionObject.o: PositionObject.hh PositionObject.cc ScreenObject.o
 	${C} PositionObject.cc -c
 
-build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o ScreenObject.o PositionObject.o main.o
-	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o ScreenObject.o PositionObject.o main.o -Wall
+Render.o: Render.hh Render.cc
+	${C} Render.cc -c
+
+build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o ScreenObject.o PositionObject.o Render.o main.o
+	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o ScreenObject.o PositionObject.o Render.o main.o -Wall
 
 clean: 
 	rm -f *.o *~ a.out message
