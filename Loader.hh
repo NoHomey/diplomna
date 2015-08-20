@@ -1,26 +1,28 @@
-#ifndef _EngineObjectGenerator_HH
+#ifndef _Loader_HH
 
-#define _EngineObjectGenerator_HH
+#define _Loader_HH
 
-#include "Render.hh"
 #include <string>
 
-class EngineObjectGenerator {
+#include "Loaded.hh"
 
-protected:
-
-	static const RGBColor::RGBColorName RGBColorName[8]
-	Render render_;
-	std::string dir_;
+class Loader {
 
 public:
 
-	EngineObjectGenerator (void);
-	EngineObjectGenerator (const std::string& dir);
-	void generate (const std::string& name) const;
-	void setDir (const std::string& dir);
-	std::string getDir (void) const;
+	Loader (void)noexcept = default;
+	Loader (const std::string& dir) noexcept;
+	auto load (const std::string& name) const -> Loaded;
+	auto setDir (const std::string& dir) noexcept -> void;
+	auto getDir (void) const noexcept -> std::string;
 
+protected:
+
+	std::string dir_ {"./Resources"};
+
+private:
+
+	auto decimal (auto& varible, const char& c) const noexcept -> void;
 
 };
 

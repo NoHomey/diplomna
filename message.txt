@@ -1,1 +1,1 @@
-Render : c++14 + added width and height and changed the way rddx is separating coordinates and color
+one step closer to GameObject

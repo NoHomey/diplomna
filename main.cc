@@ -8,11 +8,13 @@
 #include "ScreenObject.hh"
 #include "PositionObject.hh"
 #include "Render.hh"
+#include "Loader.hh"
+#include "Loaded.hh"
 
 #include <iostream>
 using namespace std;
 int main () {
-
+	/*
 	Direction d;
 	d.setDirectionName(Direction::Positive);
 	cout << d.convertNameToInt(d.getDirectionName()) << endl;
@@ -41,15 +43,17 @@ int main () {
 	PositionObject po {o.getId(), "TestObject2", {0, 1, 0}, {3, 4}};
 	po.setProperties(432, "TestObject0", {1, 1, 0}, {2, 1});
 	cout << po.getPosition().getY() << endl;
-
+	*/
 	Render r;
-	try {
- 			r.rend("./Game/", "Ship1");
- 			r.rend("./Game/", "Ship2");
- 			r.rend("./Game/", "Ship3");
- 		} catch (exception& e) {
- 			cout << e.what() << endl;
- 		}
+	r.rend("./Game/", "Ship1");
+ 	r.rend("./Game/", "Ship2");
+ 
+ 	Loader l {"./Game/"};
+ 	Loaded ld {};
+ 	cout << ld.isEmpty() <<  endl;
+ 	ld = {l.load("Ship1")};
+ 	cout << ld.getHeight() << ld.getWidth() << endl;
+ 	cout << ld.isEmpty() <<  endl;
 
 	return 0;
  }
