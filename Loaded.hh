@@ -13,7 +13,7 @@ public:
 
 	Loaded(void) noexcept = default;
 	auto append (const Position& position, const unsigned& colorCode) noexcept -> void;
-	auto isEmpty (void) const noexcept -> bool;
+	auto getData (void) const noexcept -> std::vector<std::tuple<Position, unsigned>>;
 
 private:
 

@@ -4,6 +4,6 @@ auto Loaded::append (const Position& position, const unsigned& colorCode) noexce
 	data_.push_back(std::make_tuple(position, colorCode));
 }
 
-auto Loaded::isEmpty (void) const noexcept -> bool {
-	return data_.empty();
+auto Loaded::getData (void) const noexcept -> std::vector<std::tuple<Position, unsigned>> {
+	return data_;
 }

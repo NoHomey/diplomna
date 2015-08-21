@@ -1,1 +1,1 @@
-RGBColorSet is done , Shader::shade started but not finished
+Finally Shader::shade is done.

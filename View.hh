@@ -10,12 +10,15 @@ class View : public Size {
 
 public:
 
-	View (void) noexcept = default;
 	auto addToView (const Pixel& pixel) noexcept -> void;
 
 protected:
 
 	std::vector<Pixel> view_ {};
+
+private:
+
+	using Size::Size;
 
 };
 
