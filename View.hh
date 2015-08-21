@@ -11,6 +11,7 @@ class View : public Size {
 public:
 
 	auto addToView (const Pixel& pixel) noexcept -> void;
+	auto getView (void) const noexcept -> std::vector<Pixel>;
 
 protected:
 

@@ -20,28 +20,35 @@ auto Loader::load (const std::string& name) const -> Loaded {
 	while(getline(renderedFile , line)) {
 		int x {0};
 		int y {0};
-		int flag {0};
+		int witch {0};
+		bool flag {false};
 		Position position {};
 		for(auto c : line) {
 			switch (c) {
+				case '-':
+					flag = true;
+					break;
 				case '&':
-					flag = 1;
+					x *= flag ? -1 : 1;
+					flag = false;
+					witch = 1;
 					break;
 				case '#':
-					flag = 2;
+					witch = 2;
+					y *= flag ? -1 : 1;
 					position = {x, y};
 					break;
 				case '~':
-					flag = 3;
+					witch = 3;
 					break;
 				case 'x':
-					flag = 4;
+					witch = 4;
 					break;
 				case '!':
 					loaded.setSize(height, width);
 					return loaded;
 				default : 
-					switch(flag) {
+					switch(witch) {
 						case 0:
 							decimal(x, c);
 							break;

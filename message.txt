@@ -1,1 +1,1 @@
-Finally Shader::shade is done.
+fixed alot of isues mainly about positive and negative coordinate of View.

@@ -26,7 +26,7 @@ auto Render::rend (const std::string& dir, const std::string& name) const -> voi
 						compared = current;
 						rddxFile << "0&0#" << c;
 					} else
-						rddxFile << '\n' << height  << '&' << (current - compared)  << '#' << c;
+						rddxFile << '\n' << -height  << '&' << (current - compared)  << '#' << c;
 				}
 				current++;
 			} else throw std::exception();
