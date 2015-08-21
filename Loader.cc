@@ -49,7 +49,7 @@ auto Loader::load (const std::string& name) const -> Loaded {
 							decimal(y, c);
 							break;
 						case 2:
-							loaded.add(position, (c - '0'));
+							loaded.append(position, (c - '0'));
 							break;
 						case 3:
 							decimal(height, c);

@@ -6,7 +6,6 @@
 #include "Object.hh"
 #include "RGBColor.hh"
 #include "ScreenObject.hh"
-#include "PositionObject.hh"
 #include "Render.hh"
 #include "Loader.hh"
 #include "Loaded.hh"
@@ -14,10 +13,6 @@
 #include <iostream>
 using namespace std;
 int main () {
-	
-	PositionObject p {} ;
-	p.setProperties(9, Converters::RGBColorConverter.convertNameToRGBColor(RGBColor::Cyan), {2, 3});
-	cout << p.getId() << p.getRGBColor().getBlueColor().getColor() << p.getPosition().getY() << endl;
 
 	Render r;
 	r.rend("./Game/", "Ship1");

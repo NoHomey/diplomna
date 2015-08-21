@@ -42,20 +42,26 @@ ScreenObject.o: ScreenObject.hh ScreenObject.cc Object.o Visible.o
 Positionable.o: Positionable.hh Positionable.cc Position.o
 	${C} Positionable.cc -c
 
-PositionObject.o: PositionObject.hh PositionObject.cc ScreenObject.o Positionable.o
-	${C} PositionObject.cc -c
+Pixel.o: Pixel.hh Pixel.cc View.o Positionable.o
+	${C} Pixel.cc -c
 
 Render.o: Render.hh Render.cc
 	${C} Render.cc -c
 
-Loaded.o: Loaded.hh Loaded.cc Position.o
+Size.o: Size.hh Size.cc
+	${C} Size.cc -c
+
+Loaded.o: Loaded.hh Loaded.cc Position.o Size.o
 	${C} Loaded.cc -c
 
 Loader.o: Loader.hh Loader.cc Loaded.o Render.o
 	${C} Loader.cc -c
 
-build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o PositionObject.o Render.o Loaded.o Loader.o main.o
-	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o PositionObject.o Render.o Loaded.o Loader.o main.o -Wall
+View.o: View.hh View.cc Size.o
+	${C} View.cc -c
+
+build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o main.o
+	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o main.o -Wall
 
 clean: 
 	rm -f *.o *~ a.out message
