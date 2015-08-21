@@ -4,6 +4,9 @@
 
 #include "RGBColorSet.hh"
 
+class View;
+class Loaded;
+ 
 class Shader {
 
 public:

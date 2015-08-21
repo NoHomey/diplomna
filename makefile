@@ -34,7 +34,7 @@ Object.o: Object.hh Object.cc
 	${C} Object.cc -c
 
 Visible.o: Visible.hh Visible.cc RGBColor.o
-		${C} Visible.cc -c
+	${C} Visible.cc -c
 
 ScreenObject.o: ScreenObject.hh ScreenObject.cc Object.o Visible.o
 	${C} ScreenObject.cc -c
@@ -60,8 +60,14 @@ Loader.o: Loader.hh Loader.cc Loaded.o Render.o
 View.o: View.hh View.cc Size.o
 	${C} View.cc -c
 
-build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o main.o
-	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o main.o -Wall
+RGBColorSet.o: RGBColorSet.hh RGBColorSet.cc RGBColor.o
+	${C} RGBColorSet.cc -c
+
+Shader.o: Shader.hh Shader.cc RGBColorSet.o
+	${C} Shader.cc -c
+
+build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o RGBColorSet.o Shader.o main.o
+	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o RGBColorSet.o Shader.o main.o -Wall
 
 clean: 
 	rm -f *.o *~ a.out message

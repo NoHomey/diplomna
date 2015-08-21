@@ -1,1 +1,1 @@
-Saving current state {next is Shader::shade}
+RGBColorSet is done , Shader::shade started but not finished

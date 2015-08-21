@@ -3,13 +3,14 @@
 #define _RGBColorSet_HH
 
 #include "RGBColor.hh"
+#include  <initializer_list>
 
 class RGBColorSet {
 
 public:
 
 	RGBColorSet (void) noexcept = default;
-	auto setRGBColorNameAt (const unsigned& n, const RGBColor::RGBColorName& rgbColorName_) -> void;
+	auto setRGBColorNameAt (const unsigned& n, const RGBColor::RGBColorName& rgbColorName) -> void;
 	auto setRGBColorSet (std::initializer_list<RGBColor::RGBColorName> rgbColorSet) -> void;
 	auto getRGBColorNameAt (const unsigned& n) -> RGBColor::RGBColorName;
 
