@@ -33,10 +33,16 @@ RGBColor.o: RGBColor.hh RGBColor.cc Color.o
 Object.o: Object.hh Object.cc
 	${C} Object.cc -c
 
-ScreenObject.o: ScreenObject.hh ScreenObject.cc Object.o RGBColor.o
+Visible.o: Visible.hh Visible.cc RGBColor.o
+		${C} Visible.cc -c
+
+ScreenObject.o: ScreenObject.hh ScreenObject.cc Object.o Visible.o
 	${C} ScreenObject.cc -c
 
-PositionObject.o: PositionObject.hh PositionObject.cc ScreenObject.o
+Positionable.o: Positionable.hh Positionable.cc Position.o
+	${C} Positionable.cc -c
+
+PositionObject.o: PositionObject.hh PositionObject.cc ScreenObject.o Positionable.o
 	${C} PositionObject.cc -c
 
 Render.o: Render.hh Render.cc
@@ -48,8 +54,8 @@ Loaded.o: Loaded.hh Loaded.cc Position.o
 Loader.o: Loader.hh Loader.cc Loaded.o Render.o
 	${C} Loader.cc -c
 
-build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o ScreenObject.o PositionObject.o Render.o Loaded.o Loader.o main.o
-	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o ScreenObject.o PositionObject.o Render.o Loaded.o Loader.o main.o -Wall
+build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o PositionObject.o Render.o Loaded.o Loader.o main.o
+	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o PositionObject.o Render.o Loaded.o Loader.o main.o -Wall
 
 clean: 
 	rm -f *.o *~ a.out message

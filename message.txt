@@ -1,1 +1,1 @@
-one step closer to GameObject
+Some necessary changes in the heratige.
