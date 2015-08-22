@@ -1,1 +1,1 @@
-fixed alot of isues mainly about positive and negative coordinate of View.
+Saving current state {GameObject and Engine basic functionality needs to be finished}

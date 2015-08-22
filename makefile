@@ -66,8 +66,14 @@ RGBColorSet.o: RGBColorSet.hh RGBColorSet.cc RGBColor.o
 Shader.o: Shader.hh Shader.cc RGBColorSet.o
 	${C} Shader.cc -c
 
-build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o RGBColorSet.o Shader.o main.o
-	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o RGBColorSet.o Shader.o main.o -Wall
+GameObject.o: GameObject.hh GameObject.cc View.o Object.o
+	${C} GameObject.cc -c
+
+Engine.o: Engine.hh Engine.cc ScreenObject.o
+	${C} Engine.cc -c
+ 
+build: Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o RGBColorSet.o Shader.o GameObject.o Engine.o main.o
+	${C} Direction.o Movment.o Converters.o Position.o Color.o RGBColor.o Object.o Visible.o ScreenObject.o Positionable.o Pixel.o Render.o Size.o Loaded.o Loader.o View.o RGBColorSet.o Shader.o GameObject.o Engine.o main.o -Wall
 
 clean: 
 	rm -f *.o *~ a.out message

@@ -12,6 +12,8 @@
 #include "View.hh"
 #include "Shader.hh"
 #include "RGBColorSet.hh"
+#include "Engine.hh"
+#include "GameObject.hh"
 
 #include <iostream>
 using namespace std;
@@ -21,7 +23,7 @@ int main () {
  	Shader s {};
  	s.setMode(Shader::customeMode);
  	RGBColorSet set {};
- 	set.setRGBColorSet({RGBColor::Red});
+ 	set.setRGBColorSet({RGBColor::Black});
  	s.setRGBColorSet(set);
  	View v {s.shade(l.load("Ship1"))};
  	cout << v.getHeight() << v.getWidth() << endl;
@@ -34,6 +36,12 @@ int main () {
  			cout << rgb.getColor().getColor() << ' ';
  		cout << endl;
  	}
+
+ 	GameObject go {v, -34};
+ 	cout << go.getId();
+
+ 	Engine e;
+ 	//e.draw();
 
 
 	return 0;

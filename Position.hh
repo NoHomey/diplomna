@@ -20,6 +20,8 @@ public:
     auto isValid (void) const noexcept -> bool;
     auto toInt (void) const noexcept -> int;
 
+    auto operator +=
+
 protected:
 
     static const int min;

@@ -56,7 +56,7 @@ auto RGBColor::convertNameToRGBColor (const RGBColorName& name) const noexcept -
 auto RGBColor::convertRGBColorToName (const RGBColor& rgbColor) const noexcept -> RGBColorName {
 	std::bitset<3> bits {};
 	RGBColor rgb {rgbColor};
-	for(int i = 2; i >= 0; ++i)
+	for(int i = 2; i >= 0; --i)
 		bits[i] = rgb.getColor().getColor();
 	switch(bits.to_ulong()) {
 		case 7:

@@ -34,9 +34,9 @@ auto Loader::load (const std::string& name) const -> Loaded {
 					witch = 1;
 					break;
 				case '#':
-					witch = 2;
 					y *= flag ? -1 : 1;
-					position = {x, y};
+					position.setXY(x, y);
+					witch = 2;
 					break;
 				case '~':
 					witch = 3;
