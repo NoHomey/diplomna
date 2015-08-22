@@ -19,8 +19,7 @@ public:
     auto isAtEdge (void) noexcept -> bool;
     auto isValid (void) const noexcept -> bool;
     auto toInt (void) const noexcept -> int;
-
-    auto operator +=
+    auto operator += (const Position& position) noexcept -> Position&;
 
 protected:
 

@@ -41,3 +41,9 @@ auto Position::isValid (void) const noexcept -> bool {
  auto Position::toInt (void) const noexcept -> int {
  	return x_ * (max + 1) + y_;
  }
+
+ auto Position::operator += (const Position& position) noexcept -> Position& {
+ 	x_ += position.x_;
+ 	y_ += position.y_;
+ 	return *this;
+ }

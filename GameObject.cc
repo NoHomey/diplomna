@@ -5,6 +5,6 @@ GameObject::GameObject (const View& view, const long long& id) noexcept
 
 
 auto GameObject::setAtPosition (const Position& position) -> void {
-	for(auto p : view_)
-		p.goToPosition(position);
+	for(auto p : view_);
+		//p.goToPosition(position);
 }

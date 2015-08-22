@@ -38,7 +38,12 @@ int main () {
  	}
 
  	GameObject go {v, -34};
- 	cout << go.getId();
+ 	cout << go.getId() << endl;
+
+ 	Position pos1 {1, 2};
+ 	Position pos2 {2, 3};
+ 	pos1 += pos2;
+ 	cout << pos1.getX() << pos1.getY() << endl;
 
  	Engine e;
  	//e.draw();
